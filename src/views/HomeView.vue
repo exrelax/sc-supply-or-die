@@ -1,9 +1,12 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import DefaultLayout from '../layouts/Default.vue'
+import SupplyOrDie from '../components/SupplyOrDie.vue'
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <DefaultLayout>
+    <main>
+      <SupplyOrDie />
+    </main>
+  </DefaultLayout>
 </template>
