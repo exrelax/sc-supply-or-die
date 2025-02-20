@@ -4,6 +4,7 @@
       <header>
         <h1>Supply or Die</h1>
       </header>
+      <Summary />
       <label>
         Use rounded numbers
         <input type="checkbox" v-model="shortNumberMode" />
@@ -14,16 +15,6 @@
       <MissionTable :missions="miningMissions" />
       <h2>Detatrine (high risk)</h2>
       <MissionTable :missions="detatrineMissions" />
-      <p>
-        Special thanks to
-        <a href="https://www.youtube.com/MrKraken" title="YouTube">MrKraken</a>
-        for the
-        <a
-          href="https://robertsspaceindustries.com/community-hub/post/supply-or-die-one-page-guide-wQFyeQ03XmuZm"
-          title="Star Citizen Community Hub"
-        >infographic on the SC Community Hub</a
-        >!
-      </p>
     </DefaultLayout>
   </div>
 </template>
@@ -32,7 +23,8 @@
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import DefaultLayout from '@/layouts/Default.vue'
-import MissionTable from '@/components/MissionTable.vue'
+import Summary from './Summary.vue'
+import MissionTable from './MissionTable.vue'
 import { useSupplyOrDieStore } from '@/stores/supplyOrDie.js'
 
 const store = useSupplyOrDieStore()
@@ -65,3 +57,11 @@ const detatrineMissions = computed(() => {
   })
 })
 </script>
+
+<style>
+h1 {
+  font-family: var(--font-family-fancy);
+  font-size: 300%;
+  color: var(--color-yellow-neon);
+}
+</style>

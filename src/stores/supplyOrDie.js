@@ -274,6 +274,27 @@ export const useSupplyOrDieStore = defineStore('supply-or-die', () => {
     return getHighestReward(rewards.value)
   })
 
+  const completeMissions = computed(() => {
+    return missions.value.map((mission) => {
+      return {
+        ...mission,
+        ...getMissionPayment.value(mission),
+        ...getScuPerMission.value(mission),
+        ...getMissionInvestment.value(mission),
+        ...getMissionProfit.value(mission),
+        ...getProfitForAllNeededMissions.value(mission),
+        ...getPointsPerScuForMission.value(mission),
+        ...getPointsPerContainerForMission.value(mission),
+      }
+    })
+  })
+
+  const getCompleteMission = computed(() => {
+    return (missionId) => {
+      return completeMissions.value.find((mission) => mission.id === missionId)
+    }
+  })
+
   const getMissionPayment = computed(() => {
     return (mission) => {
       return getPaymentByMission(mission, shortNumberMode.value)
@@ -345,6 +366,8 @@ export const useSupplyOrDieStore = defineStore('supply-or-die', () => {
     missionCategory,
     rewards,
     shortNumberMode,
+    completeMissions,
+    getCompleteMission,
     highestReward,
     getMissionPayment,
     getScuPerMission,

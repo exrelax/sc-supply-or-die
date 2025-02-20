@@ -1,0 +1,40 @@
+[
+  {
+    "title": "Logo",
+    "path": "logo",
+    "items": [
+      "citizens-for-prosperity",
+      "frontier-fighters",
+      "headhunters",
+      "made-by-the-community-black",
+      "made-by-the-community-white",
+      "xenothreat"
+    ],
+    "viewBoxes": [
+      {
+        "name": "citizens-for-prosperity",
+        "viewBox": "0 0 317 100"
+      },
+      {
+        "name": "frontier-fighters",
+        "viewBox": "0 0 488 100"
+      },
+      {
+        "name": "headhunters",
+        "viewBox": "0 0 188 100"
+      },
+      {
+        "name": "made-by-the-community-black",
+        "viewBox": "0 0 400 400"
+      },
+      {
+        "name": "made-by-the-community-white",
+        "viewBox": "0 0 400 400"
+      },
+      {
+        "name": "xenothreat",
+        "viewBox": "0 0 200 200"
+      }
+    ]
+  }
+]

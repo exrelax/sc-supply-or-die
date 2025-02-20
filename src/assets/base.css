@@ -1,3 +1,12 @@
+/* jolly-lodger-regular - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Jolly Lodger';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/jolly-lodger-v20-latin_latin-ext-regular.woff2') format('woff2');
+}
+
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --vt-c-white: #ffffff;
@@ -19,6 +28,29 @@
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+
+  --font-family-sans: -apple-system, blinkmacsystemfont, "Segoe UI", roboto, oxygen, ubuntu, helvetica, arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-serif: "PT Serif", georgia, "Times New Roman", times, serif;
+  --font-family-monospace: consolas, "Lucida Console", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", courier;
+  --font-family-special-chars: "Helvetica Neue", helvetica, arial, verdana, sans-serif;
+  --font-family-fancy: 'Jolly Lodger', var(--font-family-serif);
+  --font-family-headline: var(--font-family-serif);
+
+  --color-yellow-neon: #b0ff00;
+  --color-yellow-neon-rgb: 176 255 0;
+  --color-orange: #ff7601;
+  --color-orange-rgb: 255 118 1;
+
+  --color-red-youtube: #f80c0f;
+  --color-red-youtube-rgb: 248 12 15;
+
+  /* Color Fractions */
+  --color-fraction-citizens-for-prosperity: #aebc65;
+  --color-fraction-citizens-for-prosperity-rgb: 174 188 101;
+  --color-fraction-xenothreat: #cc1215;
+  --color-fraction-xenothreat-rgb: 204 18 21;
+  --color-fraction-headhunters: #7b1189;
+  --color-fraction-headhunters-rgb: 123 17 137;
 }
 
 /* semantic color variables for this project */

@@ -65,7 +65,7 @@
     <tbody class="table-missions__tbody">
       <tr
         v-for="(mission, index) in missionsComplete"
-        v-key="index"
+        :key="index"
         class="table-missions__body-row"
       >
         <td class="table-missions__cell table-missions__cell--name">
@@ -113,7 +113,6 @@
       </tr>
     </tbody>
   </table>
-  {{ investment }}
 </template>
 
 <script setup>
@@ -125,25 +124,10 @@ const props = defineProps({
 })
 
 const store = useSupplyOrDieStore()
+
 const missionsComplete = computed(() => {
   return props.missions.map((mission) => {
-    const payment = store.getMissionPayment(mission)
-    const scuPerMission = store.getScuPerMission(mission)
-    const investment = store.getMissionInvestment(mission)
-    const profit = store.getMissionProfit(mission)
-    const extendedProfit = store.getProfitForAllNeededMissions(mission)
-    const pointsPerScu = store.getPointsPerScuForMission(mission)
-    const pointsPerContainer = store.getPointsPerContainerForMission(mission)
-    return {
-      ...mission,
-      ...payment,
-      ...scuPerMission,
-      ...investment,
-      ...profit,
-      ...extendedProfit,
-      ...pointsPerScu,
-      ...pointsPerContainer,
-    }
+    return store.getCompleteMission(mission.id)
   })
 })
 </script>
