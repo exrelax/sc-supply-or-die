@@ -29,10 +29,13 @@
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
 
-  --font-family-sans: -apple-system, blinkmacsystemfont, "Segoe UI", roboto, oxygen, ubuntu, helvetica, arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --font-family-serif: "PT Serif", georgia, "Times New Roman", times, serif;
-  --font-family-monospace: consolas, "Lucida Console", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", courier;
-  --font-family-special-chars: "Helvetica Neue", helvetica, arial, verdana, sans-serif;
+  --font-family-sans:
+    -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, oxygen, ubuntu, helvetica, arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  --font-family-serif: 'PT Serif', georgia, 'Times New Roman', times, serif;
+  --font-family-monospace:
+    consolas, 'Lucida Console', 'Andale Mono', 'Bitstream Vera Sans Mono', 'Courier New', courier;
+  --font-family-special-chars: 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
   --font-family-fancy: 'Jolly Lodger', var(--font-family-serif);
   --font-family-headline: var(--font-family-serif);
 

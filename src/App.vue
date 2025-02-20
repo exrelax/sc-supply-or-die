@@ -1,7 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import SvgLogos from '@/assets/svg-sprites/logo.svg'
-
 </script>
 
 <template>

@@ -8,7 +8,6 @@ import SvgIcon from '../components/helpers/SvgIcon.vue'
   <DefaultLayout>
     <main>
       <SupplyOrDieMissionTables />
-
     </main>
     <footer>
       <div class="icon--made-by-the-community">
@@ -21,7 +20,7 @@ import SvgIcon from '../components/helpers/SvgIcon.vue'
         <a
           href="https://robertsspaceindustries.com/community-hub/post/supply-or-die-one-page-guide-wQFyeQ03XmuZm"
           title="Star Citizen Community Hub"
-        >infographic on the SC Community Hub</a
+          >infographic on the SC Community Hub</a
         >!
       </p>
     </footer>

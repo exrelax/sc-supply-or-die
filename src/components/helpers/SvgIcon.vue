@@ -18,23 +18,26 @@ const getIconData = (name: string) => {
     const iconFragments = name.split('/')
     fileName = iconFragments[0]
     iconName = iconFragments[1]
-    viewBox = iconConfig.find((item: any) => item.path === fileName)?.
-      viewBoxes.find((item: any) => item.name === iconName)?.viewBox
+    viewBox = iconConfig
+      .find((item: any) => item.path === fileName)
+      ?.viewBoxes.find((item: any) => item.name === iconName)?.viewBox
   } else {
     iconName = name
-    viewBox = iconConfig.reduce((accumulator: [any], item: any) => {
-      if (item.viewBoxes == null || !Array.isArray(item.viewBoxes)) {
-        return accumulator
-      }
+    viewBox = iconConfig
+      .reduce((accumulator: [any], item: any) => {
+        if (item.viewBoxes == null || !Array.isArray(item.viewBoxes)) {
+          return accumulator
+        }
 
-      return accumulator.concat(item.viewBoxes)
-    }, [])?.find((item: any) => item.name === iconName)?.viewBox
+        return accumulator.concat(item.viewBoxes)
+      }, [])
+      ?.find((item: any) => item.name === iconName)?.viewBox
   }
 
   return {
     fileName,
     iconName,
-    viewBox
+    viewBox,
   }
 }
 
@@ -67,9 +70,6 @@ const href = computed(() => {
 
 <template>
   <svg :class="['icon', `icon--${iconName}`]" :viewBox="viewBox">
-    <use
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-      :xlink:href="href"
-    ></use>
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="href"></use>
   </svg>
 </template>
