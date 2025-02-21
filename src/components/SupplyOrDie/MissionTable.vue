@@ -1,3 +1,20 @@
+<script setup>
+import { computed } from 'vue'
+import { useSupplyOrDieStore } from '@/stores/supplyOrDie.js'
+
+const props = defineProps({
+  missions: Array,
+})
+
+const store = useSupplyOrDieStore()
+
+const missionsComplete = computed(() => {
+  return props.missions.map((mission) => {
+    return store.getCompleteMission(mission.id)
+  })
+})
+</script>
+
 <template>
   <table class="table-missions">
     <thead class="table-missions__thead">
@@ -114,23 +131,6 @@
     </tbody>
   </table>
 </template>
-
-<script setup>
-import { computed } from 'vue'
-import { useSupplyOrDieStore } from '@/stores/supplyOrDie.js'
-
-const props = defineProps({
-  missions: Array,
-})
-
-const store = useSupplyOrDieStore()
-
-const missionsComplete = computed(() => {
-  return props.missions.map((mission) => {
-    return store.getCompleteMission(mission.id)
-  })
-})
-</script>
 
 <style>
 .table-missions {

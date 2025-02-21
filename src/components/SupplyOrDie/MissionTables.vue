@@ -57,11 +57,3 @@ const detatrineMissions = computed(() => {
   })
 })
 </script>
-
-<style>
-h1 {
-  font-family: var(--font-family-fancy);
-  font-size: 300%;
-  color: var(--color-yellow-neon);
-}
-</style>

@@ -11,7 +11,7 @@ import SvgIcon from '../components/helpers/SvgIcon.vue'
     </main>
     <footer>
       <div class="icon--made-by-the-community">
-        <SvgIcon name="logo/made-by-the-community-white" />
+        <SvgIcon name="made-by-the-community-white" />
       </div>
       <p>
         Special thanks to
@@ -30,5 +30,6 @@ import SvgIcon from '../components/helpers/SvgIcon.vue'
 <style>
 .icon--made-by-the-community {
   width: 60px;
+  color: rgb(var(--color-white-rgb) / 80%);
 }
 </style>

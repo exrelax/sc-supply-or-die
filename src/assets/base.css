@@ -7,6 +7,33 @@
   src: url('/fonts/jolly-lodger-v20-latin_latin-ext-regular.woff2') format('woff2');
 }
 
+/* goldman-regular - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Goldman';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/goldman-v19-latin_latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* goldman-700 - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Goldman';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/goldman-v19-latin_latin-ext-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* iceland-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Iceland';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/iceland-v20-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --vt-c-white: #ffffff;
@@ -19,15 +46,15 @@
 
   --vt-c-indigo: #2c3e50;
 
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
+  --vt-c-divider-light-1: rgb(60 60 60 / 29%);
+  --vt-c-divider-light-2: rgb(60 60 60 / 12%);
+  --vt-c-divider-dark-1: rgb(84 84 84 / 65%);
+  --vt-c-divider-dark-2: rgb(84 84 84 / 48%);
 
   --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
+  --vt-c-text-light-2: rgb(60 60 60 / 66%);
   --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+  --vt-c-text-dark-2: rgb(235 235 235 / 90%);
 
   --font-family-sans:
     -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, oxygen, ubuntu, helvetica, arial,
@@ -37,8 +64,34 @@
     consolas, 'Lucida Console', 'Andale Mono', 'Bitstream Vera Sans Mono', 'Courier New', courier;
   --font-family-special-chars: 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
   --font-family-fancy: 'Jolly Lodger', var(--font-family-serif);
+  --font-family-goldman: Goldman, Iceland, var(--font-family-serif);
+  --font-family-iceland: Iceland, Goldman, var(--font-family-serif);
   --font-family-headline: var(--font-family-serif);
 
+  --color-black: #000;
+  --color-black-rgb: 0 0 0;
+  --color-white: #fff;
+  --color-white-rgb: 255 255 255;
+  --color-gray-10: #f7fafc;
+  --color-gray-10-rgb: 247 250 252;
+  --color-gray-20: #edf2f7;
+  --color-gray-20-rgb: 237 242 247;
+  --color-gray-30: #e2e8f0;
+  --color-gray-30-rgb: 226 232 240;
+  --color-gray-40: #cbd5e0;
+  --color-gray-40-rgb: 203 213 224;
+  --color-gray-50: #a0aec0;
+  --color-gray-50-rgb: 160 174 192;
+  --color-gray-60: #718096;
+  --color-gray-60-rgb: 113 128 150;
+  --color-gray-70: #4a5568;
+  --color-gray-70-rgb: 74 85 104;
+  --color-gray-80: #2d3748;
+  --color-gray-80-rgb: 45 55 72;
+  --color-gray-90: #1a202c;
+  --color-gray-90-rgb: 26 32 44;
+  --color-gray-100: #171923;
+  --color-gray-100-rgb: 23 25 35;
   --color-yellow-neon: #b0ff00;
   --color-yellow-neon-rgb: 176 255 0;
   --color-orange: #ff7601;
@@ -89,7 +142,6 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  margin: 0;
   font-weight: normal;
 }
 
@@ -100,7 +152,7 @@ body {
   transition:
     color 0.5s,
     background-color 0.5s;
-  line-height: 1.6;
+  line-height: 1.5;
   font-family:
     Inter,
     -apple-system,
@@ -114,7 +166,7 @@ body {
     'Droid Sans',
     'Helvetica Neue',
     sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -6,16 +6,19 @@ export default {
       id: 'display',
       name: 'Pyro Resupply Commermorative Display',
       points: 630,
+      image: null,
     },
     {
       id: 'ravanger-212-outcast',
       name: 'Ravanger-212 “Outcast” Twin-Shotgun',
       points: 1050,
+      image: null,
     },
     {
       id: 'liveries',
       name: 'Vulture & Prospector Ship Liveries',
       points: 1470,
+      image: 'reward-liveries.png',
     },
   ],
   commodity: [

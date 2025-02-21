@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import SvgIcon from '@/components/helpers/SvgIcon.vue'
+import Rewards from './Rewards.vue'
+</script>
+
 <template>
   <div>
     <header>
@@ -9,12 +14,12 @@
         class="inline-icon inline-icon--citizens-for-prosperity"
         title="Citizens for Prosperity"
       >
-        <SvgIcon name="citizens-for-prosperity" />
+        <SvgIcon name="citizens-for-prosperity-logo" />
         <span class="screen-reader-text">Citizens for Prosperity</span>
       </span>
       &
       <span class="inline-icon inline-icon--headhunters" title="Headhunters">
-        <SvgIcon name="headhunters" />
+        <SvgIcon name="headhunters-logo" />
         <span class="screen-reader-text">Headhunters</span>
       </span>
       through priority Contracts need help to
@@ -30,23 +35,11 @@
       Hangar attributed rewards are obtainable at 3 benchmarks, with each type of contract coming in
       Small, Medium and Large. With Medium & Large being more suitable for group efforts!
     </p>
+    <Rewards />
   </div>
 </template>
-<script setup lang="ts">
-import SvgIcon from '@/components/helpers/SvgIcon.vue'
-</script>
 
 <style>
-.inline-icon {
-  svg {
-    display: inline-block;
-    height: 1.5em;
-    width: auto;
-    padding: 0 6px;
-    vertical-align: bottom;
-  }
-}
-
 .inline-icon--citizens-for-prosperity {
   color: var(--color-fraction-citizens-for-prosperity);
 }
@@ -57,7 +50,7 @@ import SvgIcon from '@/components/helpers/SvgIcon.vue'
   color: var(--color-fraction-xenothreat);
 
   svg {
-    padding: 0 2px;
+    padding: 0 4px 0 0;
   }
 }
 

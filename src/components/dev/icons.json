@@ -1,26 +1,58 @@
 [
   {
-    "title": "Logo",
-    "path": "logo",
+    "title": "Icon",
+    "path": "icon",
     "items": [
       "citizens-for-prosperity",
       "frontier-fighters",
       "headhunters",
-      "made-by-the-community-black",
-      "made-by-the-community-white",
+      "warning",
       "xenothreat"
     ],
     "viewBoxes": [
       {
         "name": "citizens-for-prosperity",
-        "viewBox": "0 0 317 100"
+        "viewBox": "0 0 100 90"
       },
       {
         "name": "frontier-fighters",
-        "viewBox": "0 0 488 100"
+        "viewBox": "0 0 100 92"
       },
       {
         "name": "headhunters",
+        "viewBox": "0 0 100 84"
+      },
+      {
+        "name": "warning",
+        "viewBox": "0 0 80 100"
+      },
+      {
+        "name": "xenothreat",
+        "viewBox": "0 0 100 100"
+      }
+    ]
+  },
+  {
+    "title": "Logo",
+    "path": "logo",
+    "items": [
+      "citizens-for-prosperity-logo",
+      "frontier-fighters-logo",
+      "headhunters-logo",
+      "made-by-the-community-black",
+      "made-by-the-community-white"
+    ],
+    "viewBoxes": [
+      {
+        "name": "citizens-for-prosperity-logo",
+        "viewBox": "0 0 317 100"
+      },
+      {
+        "name": "frontier-fighters-logo",
+        "viewBox": "0 0 488 100"
+      },
+      {
+        "name": "headhunters-logo",
         "viewBox": "0 0 188 100"
       },
       {
@@ -30,10 +62,6 @@
       {
         "name": "made-by-the-community-white",
         "viewBox": "0 0 400 400"
-      },
-      {
-        "name": "xenothreat",
-        "viewBox": "0 0 200 200"
       }
     ]
   }

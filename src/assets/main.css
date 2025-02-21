@@ -31,6 +31,34 @@ a,
   word-wrap: normal !important;
 }
 
+.inline-icon {
+  font-family: var(--font-family-iceland);
+  font-size: 150%;
+  line-height: 1;
+  letter-spacing: -.05em;
+
+  svg {
+    display: inline-block;
+    height: 1em;
+    width: auto;
+    padding: 0 6px;
+    vertical-align: middle;
+    transform: scale(1.15);
+  }
+}
+
+h1 {
+  font-family: var(--font-family-fancy);
+  font-size: 300%;
+  color: var(--color-yellow-neon);
+}
+
+h2 {
+  font-family: var(--font-family-fancy);
+  font-size: 237.5%;
+  color: var(--color-yellow-neon);
+}
+
 @media (hover: hover) {
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);

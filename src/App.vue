@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import SvgLogos from '@/assets/svg-sprites/logo.svg'
+import svgIcons from '@/assets/svg-sprites/icon.svg?raw'
+import svgLogos from '@/assets/svg-sprites/logo.svg?raw'
 </script>
 
 <template>
@@ -9,7 +10,6 @@ import SvgLogos from '@/assets/svg-sprites/logo.svg'
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>
   </header>
@@ -17,7 +17,8 @@ import SvgLogos from '@/assets/svg-sprites/logo.svg'
   <RouterView />
 
   <div class="is-hidden">
-    <SvgLogos />
+    <span v-html="svgIcons" />
+    <span v-html="svgLogos" />
   </div>
 </template>
 
