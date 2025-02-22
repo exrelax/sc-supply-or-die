@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import SvgIcon from '@/components/helpers/SvgIcon.vue'
-import Rewards from './Rewards.vue'
 </script>
 
 <template>
-  <div>
+  <div class="supply-or-die__summary">
     <header>
       <h2>Summary</h2>
     </header>
@@ -35,7 +34,6 @@ import Rewards from './Rewards.vue'
       Hangar attributed rewards are obtainable at 3 benchmarks, with each type of contract coming in
       Small, Medium and Large. With Medium & Large being more suitable for group efforts!
     </p>
-    <Rewards />
   </div>
 </template>
 

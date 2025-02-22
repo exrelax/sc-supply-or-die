@@ -15,17 +15,20 @@ const isCompleteCommoditiesArray = (commodities) => {
       return false
     }
 
-    return entry.commodity_id != null &&
+    return (
+      entry.commodity_id != null &&
       entry.containers != null &&
       entry.minPrice != null &&
       entry.maxPrice != null &&
       entry.averagePrice != null
+    )
   }, null)
 }
 
 const useCompleteCommodities = (missionCommodities, commodity) => {
-  return isCompleteCommoditiesArray(missionCommodities) ?
-    missionCommodities : createCommodities(missionCommodities, commodity)
+  return isCompleteCommoditiesArray(missionCommodities)
+    ? missionCommodities
+    : createCommodities(missionCommodities, commodity)
 }
 
 const createCommodities = (missionCommodities, commodity) => {

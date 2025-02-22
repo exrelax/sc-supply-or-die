@@ -31,13 +31,18 @@ a,
   word-wrap: normal !important;
 }
 
+svg.icon {
+  fill: currentColor;
+  width: 1.5em;
+}
+
 .inline-icon {
   font-family: var(--font-family-iceland);
   font-size: 150%;
   line-height: 1;
-  letter-spacing: -.05em;
+  letter-spacing: -0.05em;
 
-  svg {
+  svg.icon {
     display: inline-block;
     height: 1em;
     width: auto;
@@ -57,6 +62,15 @@ h2 {
   font-family: var(--font-family-fancy);
   font-size: 237.5%;
   color: var(--color-yellow-neon);
+}
+
+.button {
+  padding: 2px 6px;
+  line-height: 1.5;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
 }
 
 @media (hover: hover) {

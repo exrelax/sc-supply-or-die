@@ -11,9 +11,7 @@ export const missionCategory = ref(config.missionCategory)
 export const rewards = ref(config.rewards)
 
 export const missions = ref(
-  config.missions.map((mission) =>
-    createCompleteMissionData(mission, missionCategory, rewards),
-  ),
+  config.missions.map((mission) => createCompleteMissionData(mission, missionCategory, rewards)),
 )
 
 export const shortNumberMode = ref(true)

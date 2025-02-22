@@ -78,10 +78,88 @@ export default {
       name: 'High Risk',
     },
   ],
+  missionTableFields: [
+    {
+      name: 'name',
+      title: 'Mission',
+      classSuffix: 'name',
+    },
+    {
+      name: 'nameShort',
+      title: '',
+      classSuffix: 'name',
+    },
+    {
+      name: 'reward.points',
+      title: 'Points',
+      classSuffix: 'points',
+    },
+    {
+      name: 'paymentFormatted',
+      title: 'Pay (aUEC)',
+      classSuffix: 'payment',
+    },
+    {
+      name: 'commoditiesFormatted',
+      title: 'Commodities',
+      classSuffix: 'commodities',
+    },
+    {
+      name: 'scuPerMissionFormatted',
+      title: 'SCU',
+      classSuffix: 'scu',
+    },
+    {
+      name: 'minContainerCount',
+      title: 'min Containers',
+      classSuffix: 'containers',
+    },
+    {
+      name: 'investmentFormatted',
+      title: 'Investment (aUEC)',
+      classSuffix: 'investment',
+    },
+    {
+      name: 'profitFormatted',
+      title: 'Profit (aUEC)',
+      classSuffix: 'profit',
+    },
+    {
+      name: 'profitPerScuFormatted',
+      title: 'Profit per SCU (aUEC)',
+      classSuffix: 'profit-per-scu',
+    },
+    {
+      name: 'profitPerContainerFormatted',
+      title: 'Profit per Container (aUEC)',
+      classSuffix: 'profit-per-container',
+    },
+    {
+      name: 'pointsPerScuFormatted',
+      title: 'Points per SCU',
+      classSuffix: 'points-per-scu',
+    },
+    {
+      name: 'pointsPerContainer',
+      title: 'Points per Container',
+      classSuffix: 'points-per-container',
+    },
+    {
+      name: 'missionsNeededForHighestReward',
+      title: 'All Rewards (Hand-Ins)',
+      classSuffix: 'missions-needed',
+    },
+    {
+      name: 'profitAllNeededMissionsFormatted',
+      title: 'Profit all Rewards (aUEC)',
+      classSuffix: 'profit-per-scu',
+    },
+  ],
   missions: [
     {
       id: 'salvage-small',
       name: 'Salvage Small',
+      nameShort: 'Small',
       missionCategory_id: 'low-risk',
       reward: {
         payment: 195000,
@@ -101,6 +179,7 @@ export default {
     {
       id: 'salvage-medium',
       name: 'Salvage Medium',
+      nameShort: 'Medium',
       missionCategory_id: 'low-risk',
       reward: {
         payment: 2000000,
@@ -120,6 +199,7 @@ export default {
     {
       id: 'salvage-large',
       name: 'Salvage Large',
+      nameShort: 'Large',
       missionCategory_id: 'low-risk',
       reward: {
         payment: 5000000,
@@ -139,6 +219,7 @@ export default {
     {
       id: 'mining-small',
       name: 'Mining Small',
+      nameShort: 'Small',
       missionCategory_id: 'low-risk',
       reward: {
         payment: 195000,
@@ -158,6 +239,7 @@ export default {
     {
       id: 'mining-medium',
       name: 'Mining Medium',
+      nameShort: 'Medium',
       missionCategory_id: 'low-risk',
       reward: {
         payment: 2000000,
@@ -177,6 +259,7 @@ export default {
     {
       id: 'mining-large',
       name: 'Mining Large',
+      nameShort: 'Large',
       missionCategory_id: 'low-risk',
       reward: {
         payment: 5000000,
@@ -196,6 +279,7 @@ export default {
     {
       id: 'detatrine-small',
       name: 'Detatrine Small',
+      nameShort: 'Small',
       missionCategory_id: 'high-risk',
       reward: {
         payment: 633600,
@@ -211,6 +295,7 @@ export default {
     {
       id: 'detatrine-medium',
       name: 'Detatrine Medium',
+      nameShort: 'Medium',
       missionCategory_id: 'high-risk',
       reward: {
         payment: 5000000,
@@ -226,6 +311,7 @@ export default {
     {
       id: 'detatrine-large',
       name: 'Detatrine Large',
+      nameShort: 'Large',
       missionCategory_id: 'high-risk',
       reward: {
         payment: 24000000,

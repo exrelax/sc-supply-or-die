@@ -94,3 +94,21 @@ export const getPointsPerContainerForMission = computed(() => {
     return getPointsPerContainerByMission(mission, commodity.value)
   }
 })
+
+export const salvagingMissions = computed(() => {
+  return completeMissions.value.filter((mission) => mission.id.indexOf('salvage') > -1)
+})
+
+export const miningMissions = computed(() => {
+  return completeMissions.value.filter((mission) => mission.id.indexOf('mining') > -1)
+})
+
+export const detatrineMissions = computed(() => {
+  return completeMissions.value.filter((mission) => mission.id.indexOf('detatrine') > -1)
+})
+
+export const groupedMissions = computed(() => {
+  return (missions) => {
+
+  }
+})

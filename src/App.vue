@@ -1,24 +1,35 @@
 <script setup>
+import { computed, ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
+import { storeToRefs } from 'pinia'
+import { useSupplyOrDieStore } from '@/stores/supplyOrDie.js'
+import svgFa from '@/assets/svg-sprites/fa.svg?raw'
 import svgIcons from '@/assets/svg-sprites/icon.svg?raw'
 import svgLogos from '@/assets/svg-sprites/logo.svg?raw'
+
+const store = useSupplyOrDieStore()
+const { version } = storeToRefs(store)
+
+const versionEnvironment = computed(() => {
+  return version.value.toLowerCase().includes('ptu') ? 'ptu' : 'live'
+})
+
+const cssClasses = ref({
+  'supply-or-die': true,
+  'supply-or-die--ptu': versionEnvironment.value === 'ptu',
+  'supply-or-die--live': versionEnvironment.value === 'live',
+})
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+  <div :class="cssClasses">
+    <RouterView />
+
+    <div class="is-hidden">
+      <span v-html="svgFa" />
+      <span v-html="svgIcons" />
+      <span v-html="svgLogos" />
     </div>
-  </header>
-
-  <RouterView />
-
-  <div class="is-hidden">
-    <span v-html="svgIcons" />
-    <span v-html="svgLogos" />
   </div>
 </template>
 

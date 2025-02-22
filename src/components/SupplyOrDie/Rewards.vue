@@ -2,19 +2,13 @@
 import { storeToRefs } from 'pinia'
 import { useSupplyOrDieStore } from '@/stores/supplyOrDie.js'
 
-const props = defineProps({
-  missions: Array,
-})
-
 const store = useSupplyOrDieStore()
 const { rewards } = storeToRefs(store)
 </script>
 
 <template>
   <div class="supply-or-die__rewards">
-    <h2>
-      Rewards
-    </h2>
+    <h2>Rewards</h2>
 
     <div class="supply-or-die__rewards-grid">
       <div v-for="reward in rewards" :key="reward.id" class="supply-or-die__rewards-grid__item">
@@ -48,6 +42,11 @@ const { rewards } = storeToRefs(store)
   height: 100%;
   width: auto;
   transition: transform 0.2s ease;
+}
+
+.supply-or-die--ptu .supply-or-die__rewards-grid__item-figure img {
+  filter: grayscale(80%) blur(2px);
+  opacity: 0.8;
 }
 
 .supply-or-die__rewards-grid__item-figure:hover img {
