@@ -7,11 +7,21 @@ const props = defineProps({
 <template>
   <table class="table-missions">
     <thead class="table-missions__head">
+      <tr v-if="tableData.headerHeadline" class="table-missions__headline-row">
+        <th
+          v-for="(headerHeadline, index) in tableData.headerHeadline"
+          :key="index"
+          :class="headerHeadline.classNames"
+          :colspan="headerHeadline.colspan"
+        >
+          {{ headerHeadline.title }}
+        </th>
+      </tr>
       <tr class="table-missions__head-row">
         <th
           v-for="(header, index) in tableData.headers"
           :key="index"
-          :class="header.headClassNames"
+          :class="header.classNames"
         >
           {{ header.title }}
         </th>
@@ -42,11 +52,25 @@ const props = defineProps({
   border-collapse: separate;
 }
 
+.table-missions__cell {
+  padding: 3px 10px;
+  border-bottom: 1px solid #222;
+  text-align: left;
+}
+
+.table-missions__headline-row .table-missions__cell--headline {
+  text-align: center;
+  font-weight: 700;
+  border: 0;
+}
+
+.table-missions__headline-row .table-missions__cell,
 .table-missions__head-row .table-missions__cell {
   background: rgb(0 0 0 / 25%);
 }
 
-.table-missions__head-row .table-missions__cell--name {
+.table-missions__headline-row .table-missions__cell:first-child,
+.table-missions__head-row .table-missions__cell:first-child {
   background: transparent;
 }
 
@@ -60,12 +84,6 @@ const props = defineProps({
 
 .table-missions__body-row:hover {
   background: rgb(0 0 0 / 25%);
-}
-
-.table-missions__cell {
-  padding: 3px 10px;
-  border-bottom: 1px solid #222;
-  text-align: left;
 }
 
 .table-missions__cell--name {

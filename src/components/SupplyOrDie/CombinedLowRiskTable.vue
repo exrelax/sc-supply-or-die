@@ -2,6 +2,7 @@
 import MissionTable from "@/components/SupplyOrDie/MissionTable.vue";
 
 import config from '@/config.js'
+import { groupMissionsByFieldName, createGroupedMissionsTableData } from "@/utils/missions.js";
 
 import { computed } from 'vue'
 import { storeToRefs} from "pinia";
@@ -15,31 +16,7 @@ const combinedPyroMissions = computed(() => {
   return pyroSalvagingMissions.value.concat(pyroMiningMissions.value)
 })
 
-const getNestedValue = (obj, path) => {
-  return path.split('.').reduce((acc, key) => acc && acc[key], obj);
-}
-
-const groupMissions = (missions, fieldName) => {
-  return missions.reduce((accumulator, mission) => {
-    const searchValue = mission[fieldName]
-    const foundGroup = accumulator.find((group) => group.title === searchValue)
-
-    if (foundGroup) {
-      foundGroup.missions.push(mission)
-    } else {
-      accumulator.push({
-        title: searchValue,
-        missions: [mission],
-      })
-    }
-
-    return accumulator
-  }, [])
-}
-
-const cellClassName = 'table-missions__cell'
-const gapClassName = `${cellClassName}--gap`
-const fields = [
+const fieldNames = [
   'nameShort',
   'reward.points',
   'paymentFormatted',
@@ -47,70 +24,10 @@ const fields = [
   'commoditiesFormatted',
 ]
 
-const createMissionsTableData = (groupedMissions) => {
-  const fieldConfig = fields.map((fieldName) => {
-    const missionTableField = missionTableFields.find((field) => field.name === fieldName)
-    const classNames = [cellClassName, `${cellClassName}--${missionTableField.classSuffix}`]
-    const headClassNames = classNames.concat(`${cellClassName}--head`)
-
-    return {
-      ...missionTableField,
-      classNames,
-      headClassNames,
-    }
-  })
-  const headers = [fieldConfig[0]]
-
-  const rows = groupedMissions.map((group, rowIndex) => {
-    const cells = [{
-      title: group.title,
-      classNames: headers[0].classNames,
-    }]
-
-    group.missions.forEach((mission, missionIndex) => {
-      fieldConfig.forEach((singleFieldConfig, cellIndex) => {
-        if (cellIndex === 0) {
-          return
-        }
-
-        const title = singleFieldConfig.name.indexOf('.') > -1 ?
-          getNestedValue(mission, singleFieldConfig.name) : mission[singleFieldConfig.name]
-        const missionClassName = `${cellClassName}--mission-${missionIndex}`
-        const classNames = singleFieldConfig.classNames.concat([missionClassName])
-        const headClassNames = singleFieldConfig.headClassNames.concat([missionClassName])
-
-        if (missionIndex > 0 && cellIndex === 1) {
-          classNames.push(gapClassName)
-          headClassNames.push(gapClassName)
-        }
-
-        if (rowIndex === 0) {
-          headers.push({
-            ...singleFieldConfig,
-            headClassNames,
-          })
-        }
-
-        cells.push({
-          title,
-          classNames,
-        })
-      })
-    })
-
-    return cells
-  })
-
-  return {
-    headers,
-    rows,
-  }
-}
-
 const tableData = computed(() => {
-  const groupedMissions = groupMissions(combinedPyroMissions.value, 'nameShort')
+  const groupedMissions = groupMissionsByFieldName(combinedPyroMissions.value, 'nameShort')
 
-  return createMissionsTableData(groupedMissions)
+  return createGroupedMissionsTableData(groupedMissions, fieldNames)
 })
 </script>
 

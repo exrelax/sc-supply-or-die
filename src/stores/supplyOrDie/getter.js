@@ -66,22 +66,3 @@ export const stantonMiningMissions = computed(() => {
   return miningMissions.value.filter((mission) => mission.system.toLowerCase().indexOf('stanton') > -1)
 })
 
-export const groupMissionsByFieldName = computed(() => {
-  return (missions, fieldName) => {
-    return missions.reduce((accumulator, mission) => {
-      const searchValue = mission[fieldName]
-      const foundGroup = accumulator.find((group) => group.title === searchValue)
-
-      if (foundGroup) {
-        foundGroup.missions.push(mission)
-      } else {
-        accumulator.push({
-          title: searchValue,
-          missions: [mission],
-        })
-      }
-
-      return accumulator
-    }, [])
-  }
-})

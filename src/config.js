@@ -180,6 +180,7 @@ export default {
       nameShort: 'Small',
       missionCategory_id: 'low-risk',
       system: 'Pyro',
+      type: 'Salvage',
       reward: {
         payment: 391000,
         points: 200,
@@ -201,6 +202,7 @@ export default {
       nameShort: 'Medium',
       missionCategory_id: 'low-risk',
       system: 'Pyro',
+      type: 'Salvage',
       reward: {
         payment: 3000000,
         points: 300,
@@ -222,6 +224,7 @@ export default {
       nameShort: 'Large',
       missionCategory_id: 'low-risk',
       system: 'Pyro',
+      type: 'Salvage',
       reward: {
         payment: 13000000,
         points: 534,
@@ -243,6 +246,7 @@ export default {
       nameShort: 'Small',
       missionCategory_id: 'low-risk',
       system: 'Pyro',
+      type: 'Mining/Trading',
       reward: {
         payment: 790000,
         points: 188,
@@ -264,6 +268,7 @@ export default {
       nameShort: 'Medium',
       missionCategory_id: 'low-risk',
       system: 'Pyro',
+      type: 'Mining/Trading',
       reward: {
         payment: 6000000,
         points: 392,
@@ -285,6 +290,7 @@ export default {
       nameShort: 'Large',
       missionCategory_id: 'low-risk',
       system: 'Pyro',
+      type: 'Mining/Trading',
       reward: {
         payment: 26000000,
         points: 715,
@@ -306,6 +312,7 @@ export default {
       nameShort: 'Small',
       missionCategory_id: 'low-risk',
       system: 'Stanton',
+      type: 'Mining/Trading',
       reward: {
         payment: 391000,
         points: 200,
@@ -327,6 +334,7 @@ export default {
       nameShort: 'Medium',
       missionCategory_id: 'low-risk',
       system: 'Stanton',
+      type: 'Mining/Trading',
       reward: {
         payment: 3000000,
         points: 300,
@@ -348,6 +356,7 @@ export default {
       nameShort: 'Large',
       missionCategory_id: 'low-risk',
       system: 'Stanton',
+      type: 'Mining/Trading',
       reward: {
         payment: 13000000,
         points: 534,
@@ -369,6 +378,7 @@ export default {
       nameShort: 'Small',
       missionCategory_id: 'high-risk',
       system: 'Pyro',
+      type: 'Trading',
       reward: {
         payment: 634000,
         points: 199,
@@ -386,6 +396,7 @@ export default {
       nameShort: 'Medium',
       missionCategory_id: 'high-risk',
       system: 'Pyro',
+      type: 'Trading',
       reward: {
         payment: 5000000,
         points: 292,
@@ -403,6 +414,7 @@ export default {
       nameShort: 'Large',
       missionCategory_id: 'high-risk',
       system: 'Pyro',
+      type: 'Trading',
       reward: {
         payment: 24000000,
         points: 548,

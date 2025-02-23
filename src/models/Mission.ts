@@ -45,6 +45,7 @@ interface ConfigMission {
   nameShort: string,
   missionCategory_id: string,
   system: System,
+  type: string,
   commodities: ConfigMissionCommodity[],
   reward: MissionReward,
 }
