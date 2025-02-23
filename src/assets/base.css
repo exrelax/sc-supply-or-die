@@ -100,9 +100,16 @@
   --color-green-rgb: 0 255 0;
   --color-green-dark: #00b300;
   --color-green-dark-rgb: 0 179 0;
+  --color-blue-sky: #00aaea;
+  --color-blue-sky-rgb: 0 170 234;
 
   --color-red-youtube: #f80c0f;
   --color-red-youtube-rgb: 248 12 15;
+
+  --color-pyro: var(--color-yellow-neon);
+  --color-pyro-rgb: var(--color-yellow-neon-rgb);
+  --color-stanton: var(--color-blue-sky);
+  --color-stanton-rgb: var(--color-blue-sky-rgb);
 
   /* Color Fractions */
   --color-fraction-citizens-for-prosperity: #aebc65;

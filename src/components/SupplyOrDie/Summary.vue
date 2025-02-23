@@ -21,7 +21,11 @@ import SvgIcon from '@/components/helpers/SvgIcon.vue'
         <SvgIcon name="headhunters-logo" />
         <span class="screen-reader-text">Headhunters</span>
       </span>
-      through priority Contracts need help to
+      through
+      <span class="inline-icon inline-icon--warning">
+        <SvgIcon name="warning" />
+      </span>
+      Priority Contracts need help to
       <span class="highlight">resupply stations across Pyro</span>. With demands for RMC, CM,
       Mineable/Trade commodities and the lucrative Detatrine – which is sold at new
       <span class="inline-icon inline-icon--xenothreat">
@@ -47,8 +51,21 @@ import SvgIcon from '@/components/helpers/SvgIcon.vue'
 .inline-icon--xenothreat {
   color: var(--color-fraction-xenothreat);
 
-  svg {
+  svg.icon {
     padding: 0 4px 0 0;
+  }
+}
+
+.inline-icon--warning {
+  --icon-font-size: 14;
+  --icon-line-height: 24;
+
+  font-size: calc(var(--icon-font-size) / 16 * 100%);
+  line-height: calc(var(--icon-line-height) / var(--icon-font-size));
+
+  svg.icon {
+    padding-right: 2px;
+    vertical-align: text-bottom;
   }
 }
 

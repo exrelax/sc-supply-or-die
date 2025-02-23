@@ -1,17 +1,16 @@
 import { computed } from 'vue'
 import {
-  getCommoditiesForMissionByMission,
-  getHighestReward,
-  getHighestRewardPoints,
-  getMissionInvestmentByMission,
-  getMissionProfitByMission,
-  getPaymentByMission,
+  getCompleteCommoditiesForMission,
+  getCompletePaymentForMission,
+  getScuPerMissionForMission,
+  getMissionInvestmentForMission,
+  getMissionProfitForMission,
+  getProfitForAllNeededMissionsForMission,
+  getPointsPerScuForMission,
   getPointsPerContainerByMission,
-  getPointsPerScuForMissionByMission,
-  getProfitForAllNeededMissionsByMission,
-  getScuPerMissionByMission,
-} from '@/utils/missionData.js'
-import { commodity, rewards, missions, shortNumberMode } from './state.js'
+} from '@/models/Mission.ts'
+import { getHighestReward } from '@/utils/rewards.ts'
+import { commodities, rewards, missions, shortNumberMode } from './state.js'
 
 export const highestReward = computed(() => {
   return getHighestReward(rewards.value)
@@ -21,14 +20,14 @@ export const completeMissions = computed(() => {
   return missions.value.map((mission) => {
     return {
       ...mission,
-      ...getCommoditiesForMission.value(mission),
-      ...getMissionPayment.value(mission),
-      ...getScuPerMission.value(mission),
-      ...getMissionInvestment.value(mission),
-      ...getMissionProfit.value(mission),
-      ...getProfitForAllNeededMissions.value(mission),
-      ...getPointsPerScuForMission.value(mission),
-      ...getPointsPerContainerForMission.value(mission),
+      ...getCompleteCommoditiesForMission(mission, commodities.value),
+      ...getCompletePaymentForMission(mission, shortNumberMode.value),
+      ...getScuPerMissionForMission(mission, commodities.value),
+      ...getMissionInvestmentForMission(mission, commodities.value, shortNumberMode.value),
+      ...getMissionProfitForMission(mission, commodities.value, shortNumberMode.value),
+      ...getProfitForAllNeededMissionsForMission(mission, commodities.value, shortNumberMode.value),
+      ...getPointsPerScuForMission(mission, commodities.value, shortNumberMode.value),
+      ...getPointsPerContainerByMission(mission, commodities.value),
     }
   })
 })
@@ -36,62 +35,6 @@ export const completeMissions = computed(() => {
 export const getCompleteMission = computed(() => {
   return (missionId) => {
     return completeMissions.value.find((mission) => mission.id === missionId)
-  }
-})
-
-export const getCommoditiesForMission = computed(() => {
-  return (mission) => {
-    return getCommoditiesForMissionByMission(mission, commodity.value)
-  }
-})
-
-export const getMissionPayment = computed(() => {
-  return (mission) => {
-    return getPaymentByMission(mission, shortNumberMode.value)
-  }
-})
-
-export const getScuPerMission = computed(() => {
-  return (mission) => {
-    return getScuPerMissionByMission(mission, commodity.value)
-  }
-})
-
-export const getMissionInvestment = computed(() => {
-  return (mission) => {
-    return getMissionInvestmentByMission(mission, commodity.value, shortNumberMode.value)
-  }
-})
-
-export const getMissionProfit = computed(() => {
-  return (mission) => {
-    return getMissionProfitByMission(mission, commodity.value, shortNumberMode.value)
-  }
-})
-
-export const getProfitForAllNeededMissions = computed(() => {
-  return (mission) => {
-    const highestRewardPoints = getHighestRewardPoints(rewards.value)
-    const missionsNeededForHighestReward = Math.ceil(highestRewardPoints / mission.reward.points)
-
-    return getProfitForAllNeededMissionsByMission(
-      mission,
-      missionsNeededForHighestReward,
-      commodity.value,
-      shortNumberMode.value,
-    )
-  }
-})
-
-export const getPointsPerScuForMission = computed(() => {
-  return (mission) => {
-    return getPointsPerScuForMissionByMission(mission, commodity.value, shortNumberMode.value)
-  }
-})
-
-export const getPointsPerContainerForMission = computed(() => {
-  return (mission) => {
-    return getPointsPerContainerByMission(mission, commodity.value)
   }
 })
 
@@ -107,8 +50,38 @@ export const detatrineMissions = computed(() => {
   return completeMissions.value.filter((mission) => mission.id.indexOf('detatrine') > -1)
 })
 
-export const groupedMissions = computed(() => {
-  return (missions) => {
+export const pyroSalvagingMissions = computed(() => {
+  return salvagingMissions.value.filter((mission) => mission.system.toLowerCase().indexOf('pyro') > -1)
+})
 
+export const stantonSalvagingMissions = computed(() => {
+  return salvagingMissions.value.filter((mission) => mission.system.toLowerCase().indexOf('stanton') > -1)
+})
+
+export const pyroMiningMissions = computed(() => {
+  return miningMissions.value.filter((mission) => mission.system.toLowerCase().indexOf('pyro') > -1)
+})
+
+export const stantonMiningMissions = computed(() => {
+  return miningMissions.value.filter((mission) => mission.system.toLowerCase().indexOf('stanton') > -1)
+})
+
+export const groupMissionsByFieldName = computed(() => {
+  return (missions, fieldName) => {
+    return missions.reduce((accumulator, mission) => {
+      const searchValue = mission[fieldName]
+      const foundGroup = accumulator.find((group) => group.title === searchValue)
+
+      if (foundGroup) {
+        foundGroup.missions.push(mission)
+      } else {
+        accumulator.push({
+          title: searchValue,
+          missions: [mission],
+        })
+      }
+
+      return accumulator
+    }, [])
   }
 })

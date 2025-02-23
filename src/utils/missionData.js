@@ -1,3 +1,5 @@
+/* Deprecated */
+
 import config from '@/config.js'
 import {
   createFormattedNumberRange,
@@ -59,20 +61,6 @@ const getContainerCountByMission = (commodities) => {
 
     return containerForMission + commodityContainers
   }, 0)
-}
-
-export const createCompleteMissionData = (mission, missionCategory, rewards) => {
-  const foundCategory = missionCategory.value.find(
-    (category) => category.id === mission.missionCategory_id,
-  )
-  const highestRewardPoints = getHighestRewardPoints(rewards.value)
-  const missionsNeededForHighestReward = Math.ceil(highestRewardPoints / mission.reward.points)
-
-  return {
-    ...mission,
-    missionCategory: foundCategory,
-    missionsNeededForHighestReward,
-  }
 }
 
 export const getCommoditiesForMissionByMission = (mission, commodity) => {
@@ -153,12 +141,6 @@ export const getScuPerMissionByMission = (mission, commodity) => {
     scuPerMission,
     scuPerMissionFormatted,
   }
-}
-
-export const getMissionsNeededForHighestRewardCount = (mission, rewards) => {
-  const highestRewardPoints = getHighestRewardPoints(rewards)
-
-  return Math.ceil(highestRewardPoints / mission.reward.points)
 }
 
 export const getMissionInvestmentByMission = (mission, commodity, shortNumberMode) => {

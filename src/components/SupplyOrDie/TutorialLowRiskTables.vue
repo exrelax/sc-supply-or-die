@@ -107,7 +107,7 @@ const createMissionsTableData = (groupedMissions) => {
   }
 }
 
-const tableData = computed(() => {
+const pyroTableData = computed(() => {
   const groupedMissions = groupMissions(combinedPyroMissions.value, 'nameShort')
 
   return createMissionsTableData(groupedMissions)
@@ -115,20 +115,29 @@ const tableData = computed(() => {
 </script>
 
 <template>
-  <div class="supply-or-die__low-risk">
-    <header>
-      <h2>Low Risk</h2>
-      <p>Salvage, Mine, Trade or ‘Liberate’ Resources</p>
-    </header>
-    <div>
-      <MissionTable :table-data="tableData"/>
+  <div class="supply-or-die__tutorial-tables">
+    <div class="supply-or-die__tutorial-tables__pyro">
+      <h2>Pyro</h2>
+      <MissionTable :tableData="pyroTableData" />
+    </div>
+    <div class="supply-or-die__tutorial-tables__stanton">
+      <h2>Stanton</h2>
     </div>
   </div>
 </template>
 
 <style>
-.supply-or-die__low-risk {
+.supply-or-die__tutorial-tables {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.supply-or-die__tutorial-tables__pyro {
+  width: 66%;
+}
+
+.supply-or-die__tutorial-tables__stanton {
+  width: 33%;
 }
 </style>

@@ -1,5 +1,5 @@
-import { createCompleteMissionData } from '@/utils/missionData.js'
-import { missions, missionCategory, shortNumberMode, commodity, rewards } from './state.js'
+import { createStateMission } from '@/models/Mission.ts'
+import { missions, missionCategories, shortNumberMode, commodities, rewards } from './state.js'
 
 export function changeMission(missionData) {
   const missionIndex = missions.value.findIndex((item) => item.id === missionData.id)
@@ -8,7 +8,7 @@ export function changeMission(missionData) {
     return false
   }
 
-  const mission = createCompleteMissionData(missionData, missionCategory, rewards)
+  const mission = createStateMission(missionData, missionCategories.value, rewards.value)
 
   missions.value.splice(missionIndex, 1, mission)
 }
