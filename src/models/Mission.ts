@@ -183,7 +183,7 @@ export const getCompleteCommoditiesForMission = (mission: Mission|CompleteMissio
   }, 0)
 
   return {
-    commodities,
+    commodities: completeMissionCommodities,
     commoditiesFormatted,
     minContainerCount,
     containerCount,

@@ -1,11 +1,25 @@
 <script setup>
+import { computed, defineProps } from 'vue'
+import isComponent from "@/composables/isComponent";
+import SvgIcon from "@/components/helpers/SvgIcon.vue";
+
+isComponent(SvgIcon)
+
 const props = defineProps({
   tableData: Object,
+  groupTable: Boolean,
+})
+
+const tableCssClasses = computed(() => {
+  return {
+    'table-missions': true,
+    'table-missions--grouped': props.groupTable,
+  }
 })
 </script>
 
 <template>
-  <table class="table-missions">
+  <table :class="tableCssClasses">
     <thead class="table-missions__head">
       <tr v-if="tableData.headerHeadline" class="table-missions__headline-row">
         <th
@@ -14,7 +28,8 @@ const props = defineProps({
           :class="headerHeadline.classNames"
           :colspan="headerHeadline.colspan"
         >
-          {{ headerHeadline.title }}
+          <component v-if="isComponent(headerHeadline.component)" :is="headerHeadline.component" v-bind="headerHeadline.componentProps" />
+          <span v-if="headerHeadline.title != null" v-html="headerHeadline.title" class="table-missions__cell-title" />
         </th>
       </tr>
       <tr class="table-missions__head-row">
@@ -23,7 +38,8 @@ const props = defineProps({
           :key="index"
           :class="header.classNames"
         >
-          {{ header.title }}
+          <component v-if="isComponent(header.component)" :is="header.component" v-bind="header.componentProps" />
+          <span v-if="header.title != null" v-html="header.title" class="table-missions__cell-title" />
         </th>
       </tr>
     </thead>
@@ -36,7 +52,8 @@ const props = defineProps({
         v-for="(cell, index) in row" :key="index"
         :class="cell.classNames"
       >
-        {{ cell.title }}
+        <component v-if="isComponent(cell.component)" :is="cell.component" v-bind="cell.componentProps" />
+        <span v-if="cell.title != null" v-html="cell.title" class="table-missions__cell-title" />
       </td>
     </tr>
     </tbody>
@@ -58,6 +75,10 @@ const props = defineProps({
   text-align: left;
 }
 
+.table-missions__cell .icon {
+  margin-right: .5em;
+}
+
 .table-missions__headline-row .table-missions__cell--headline {
   text-align: center;
   font-weight: 700;
@@ -69,7 +90,7 @@ const props = defineProps({
   background: rgb(0 0 0 / 25%);
 }
 
-.table-missions__headline-row .table-missions__cell:first-child,
+.table-missions__headline-row .table-missions__cell--headline-offset,
 .table-missions__head-row .table-missions__cell--name {
   background: transparent;
 }

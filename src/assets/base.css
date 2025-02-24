@@ -68,6 +68,12 @@
   --font-family-iceland: Iceland, Goldman, var(--font-family-serif);
   --font-family-headline: var(--font-family-serif);
 
+  --font-size-body: 16;
+  --font-size-body-px: var(--font-size-body)px;
+  --line-height-body: 24;
+  --line-height-body-px: var(--line-height-body)px;
+  --line-height-body-scale: calc(var(--line-height-body) / var(--font-size-body));
+
   --color-black: #000;
   --color-black-rgb: 0 0 0;
   --color-white: #fff;
@@ -163,7 +169,7 @@ body {
   transition:
     color 0.5s,
     background-color 0.5s;
-  line-height: 1.5;
+  line-height: var(--line-height-body-scale);
   font-family:
     Inter,
     -apple-system,
@@ -177,7 +183,7 @@ body {
     'Droid Sans',
     'Helvetica Neue',
     sans-serif;
-  font-size: 16px;
+  font-size: var(--font-size-body-px);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

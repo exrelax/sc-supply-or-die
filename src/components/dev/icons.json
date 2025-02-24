@@ -24,6 +24,7 @@
       "citizens-for-prosperity",
       "frontier-fighters",
       "headhunters",
+      "uec",
       "warning",
       "xenothreat"
     ],
@@ -39,6 +40,10 @@
       {
         "name": "headhunters",
         "viewBox": "0 0 100 84"
+      },
+      {
+        "name": "uec",
+        "viewBox": "0 0 94 100"
       },
       {
         "name": "warning",

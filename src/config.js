@@ -119,7 +119,7 @@ export default {
     },
     {
       name: 'commoditiesFormatted',
-      title: 'Commodities',
+      title: 'Items',
       classSuffix: 'commodities',
     },
     {
