@@ -32,6 +32,7 @@ const headCellClassName = `${cellClassName}--head`
 const headlineCellClassName = `${cellClassName}--headline`
 const groupTitleCellClassName = `${cellClassName}--group-title`
 const gapClassName = `${cellClassName}--gap`
+const missionCellClassNamePrefix = `${cellClassName}--mission-`
 
 export const getNestedValue = (obj: any, path: string): any => {
   return path.split('.').reduce((acc, key) => acc && acc[key], obj);
@@ -84,7 +85,7 @@ const createMissionTableFields = (fieldNames: string[]) => {
 const createMissionTableCell = (mission: CompleteMission, missionTableField: MissionTableField, missionIndex: number, cellIndex: number, groupTable: boolean = false): MissionTableCell => {
   const title = missionTableField.name.indexOf('.') > -1 ?
     getNestedValue(mission, missionTableField.name) : mission[missionTableField.name]
-  const missionClassName = `${cellClassName}--mission-${missionIndex}`
+  const missionClassName = `${missionCellClassNamePrefix}${missionIndex}`
   const classNames: string[] = missionTableField.classNames.concat([missionClassName])
   const headClassNames: string[] = missionTableField.headClassNames.concat([missionClassName])
 
@@ -160,8 +161,22 @@ const createGroupedMissionTableRows = (missionGroups: MissionGroup[], missionTab
   })
 }
 
+export const createHeadlineClassNames = (missionIndex?: number): string[] => {
+  const classNames = [cellClassName, headlineCellClassName]
+
+  if (missionIndex != null) {
+    classNames.push(`${missionCellClassNamePrefix}${missionIndex}`)
+  }
+
+  if (missionIndex > 0) {
+    classNames.push(gapClassName)
+  }
+
+  return classNames
+}
+
 const createGroupedMissionHeaderHeadline = (missionGroups: MissionGroup[], headers: MissionTableField[], fieldNames: string[], missionHeadlineField: string) => {
-  let classNames = [cellClassName, headlineCellClassName]
+  let classNames = createHeadlineClassNames()
   const headerHeadline: MissionTableCell[] = [
     {
       title: '',
@@ -171,11 +186,7 @@ const createGroupedMissionHeaderHeadline = (missionGroups: MissionGroup[], heade
   ]
 
   missionGroups[0].missions.forEach((mission: CompleteMission, missionIndex) => {
-    classNames = classNames.concat([`${cellClassName}--mission-${missionIndex}`])
-
-    if (missionIndex > 0) {
-      classNames.push(gapClassName)
-    }
+    classNames = createHeadlineClassNames(missionIndex)
 
     headerHeadline.push({
       title: mission[missionHeadlineField],

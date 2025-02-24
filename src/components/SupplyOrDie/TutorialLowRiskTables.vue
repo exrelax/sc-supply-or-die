@@ -8,6 +8,7 @@ import { storeToRefs} from "pinia";
 import { useSupplyOrDieStore } from '@/stores/supplyOrDie.js'
 import {
   createGroupedMissionsTableData,
+  createHeadlineClassNames,
   createMissionTableData,
   groupMissionsByFieldName
 } from "@/utils/missions.js";
@@ -39,7 +40,19 @@ const pyroTableData = computed(() => {
 })
 
 const stantonTableData = computed(() => {
-  return createMissionTableData(combinedStantonMissions.value, fieldNames)
+  const stantonTableFieldNames = fieldNames.slice(1)
+  const tableData = createMissionTableData(combinedStantonMissions.value, stantonTableFieldNames)
+
+  return {
+    ...tableData,
+    headerHeadline: [
+      {
+        title: combinedStantonMissions.value[0].type,
+        classNames: createHeadlineClassNames(),
+        colspan: stantonTableFieldNames.length,
+      },
+    ]
+  }
 })
 </script>
 
@@ -64,7 +77,8 @@ const stantonTableData = computed(() => {
 }
 
 .supply-or-die__tutorial-tables__pyro {
-  width: 66%;
+  width: 60%;
+  overflow: hidden;
 }
 
 .supply-or-die__tutorial-tables__stanton {

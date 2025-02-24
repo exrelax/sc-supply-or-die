@@ -8,7 +8,9 @@ import SvgIcon from '../components/helpers/SvgIcon.vue'
 <template>
   <DefaultLayout>
     <Tutorial />
+    <!--
     <SupplyOrDieMissionTables />
+    -->
   </DefaultLayout>
 </template>
 

@@ -70,7 +70,7 @@ const props = defineProps({
 }
 
 .table-missions__headline-row .table-missions__cell:first-child,
-.table-missions__head-row .table-missions__cell:first-child {
+.table-missions__head-row .table-missions__cell--name {
   background: transparent;
 }
 
