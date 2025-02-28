@@ -15,9 +15,9 @@ const versionEnvironment = computed(() => {
 })
 
 const cssClasses = ref({
-  'supply-or-die': true,
-  'supply-or-die--ptu': versionEnvironment.value === 'ptu',
-  'supply-or-die--live': versionEnvironment.value === 'live',
+  'sod': true,
+  'sod--ptu': versionEnvironment.value === 'ptu',
+  'sod--live': versionEnvironment.value === 'live',
 })
 </script>
 

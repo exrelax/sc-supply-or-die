@@ -23,6 +23,7 @@
     "items": [
       "citizens-for-prosperity",
       "frontier-fighters",
+      "graffiti-arrow-left",
       "headhunters",
       "uec",
       "warning",
@@ -36,6 +37,10 @@
       {
         "name": "frontier-fighters",
         "viewBox": "0 0 100 92"
+      },
+      {
+        "name": "graffiti-arrow-left",
+        "viewBox": "0 0 100 100"
       },
       {
         "name": "headhunters",

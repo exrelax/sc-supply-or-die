@@ -3,7 +3,7 @@ import SvgIcon from '@/components/helpers/SvgIcon.vue'
 </script>
 
 <template>
-  <div class="supply-or-die__summary">
+  <div class="sod__summary">
     <header>
       <h2>Summary</h2>
     </header>
@@ -24,15 +24,21 @@ import SvgIcon from '@/components/helpers/SvgIcon.vue'
       through
       <span class="inline-icon inline-icon--warning">
         <SvgIcon name="warning" />
+        Priority Contracts
       </span>
-      Priority Contracts need help to
-      <span class="highlight">resupply stations across Pyro</span>. With demands for RMC, CM,
-      Mineable/Trade commodities and the lucrative Detatrine – which is sold at new
+      need help to resupply
+      <span class="location--pyro">Ruin</span>,
+      <span class="location--pyro">Orbituary</span> &
+      <span class="location--pyro">Checkmate</span> stations in Pyro &
+      <span class="location--stanton">Pyro Gateway</span> in
+      <span class="location--stanton">Stanton</span>.
+      With demands for RMC, CM, Mineable/Trade commodities and the lucrative
+      Detatrine – which is sold at new
       <span class="inline-icon inline-icon--xenothreat">
         XenoThreat
         <SvgIcon name="xenothreat" />
       </span>
-      Depot locations.
+      depot locations.
     </p>
     <p>
       Hangar attributed rewards are obtainable at 3 benchmarks, with each type of contract coming in
@@ -42,6 +48,18 @@ import SvgIcon from '@/components/helpers/SvgIcon.vue'
 </template>
 
 <style>
+.location--pyro {
+  color: var(--color-pyro);
+}
+
+.location--stanton {
+  color: var(--color-stanton);
+}
+
+.inline-icon {
+  white-space: nowrap;
+}
+
 .inline-icon--citizens-for-prosperity {
   color: var(--color-fraction-citizens-for-prosperity);
 }
@@ -58,14 +76,12 @@ import SvgIcon from '@/components/helpers/SvgIcon.vue'
 
 .inline-icon--warning {
   --icon-font-size: 14;
-  --icon-line-height: 24;
-
-  font-size: calc(var(--icon-font-size) / 16 * 100%);
-  line-height: calc(var(--icon-line-height) / var(--icon-font-size));
+  --icon-line-height: var(--line-height-icon-inline);
 
   svg.icon {
+    font-size: calc(var(--icon-font-size) / var(--font-size-icon-inline) * 100%);
+    line-height: calc(var(--icon-line-height) / var(--icon-font-size));
     padding-right: 2px;
-    vertical-align: text-bottom;
   }
 }
 

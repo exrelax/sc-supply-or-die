@@ -1,5 +1,5 @@
 export default {
-  version: '4.0.2-PTU.9573936',
+  version: '4.0.2-LIVE.9589006',
   scuContainerSizes: [1, 2, 4, 8, 16, 24, 32],
   rewards: [
     {
