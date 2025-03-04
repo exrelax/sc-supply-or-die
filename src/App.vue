@@ -15,7 +15,7 @@ const versionEnvironment = computed(() => {
 })
 
 const cssClasses = ref({
-  'sod': true,
+  sod: true,
   'sod--ptu': versionEnvironment.value === 'ptu',
   'sod--live': versionEnvironment.value === 'live',
 })

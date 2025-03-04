@@ -15,73 +15,79 @@ enum System {
 }
 
 export interface PriceRange {
-  average: number,
-  min: number,
-  max: number,
+  average: number
+  min: number
+  max: number
 }
 
 interface ConfigMissionCommodity {
-  commodity_id: string,
-  scu: number,
+  commodity_id: string
+  scu: number
 }
 
 interface MissionCommodity extends ConfigMissionCommodity, Commodity {}
 
 export interface CompleteMissionCommodity extends MissionCommodity {
-  averagePrice: number,
-  containers: Container[],
-  maxPrice: number,
-  minPrice: number,
+  averagePrice: number
+  containers: Container[]
+  maxPrice: number
+  minPrice: number
 }
 
 interface MissionReward {
-  payment: number,
-  points: number,
+  payment: number
+  points: number
 }
 
 interface ConfigMission {
-  id: string,
-  name: string,
-  nameShort: string,
-  missionCategory_id: string,
-  system: System,
-  type: string,
-  commodities: ConfigMissionCommodity[],
-  reward: MissionReward,
+  id: string
+  name: string
+  nameShort: string
+  missionCategory_id: string
+  system: System
+  type: string
+  commodities: ConfigMissionCommodity[]
+  reward: MissionReward
 }
 
 export interface Mission extends ConfigMission {
-  missionsNeededForHighestReward: number,
-  missionCategory: MissionCategory,
+  missionsNeededForHighestReward: number
+  missionCategory: MissionCategory
 }
 
 export interface CompleteMission extends Mission {
-  commodities: CompleteMissionCommodity[],
-  commoditiesFormatted: string,
-  containerCount: number,
-  minContainerCount: number,
-  investment: PriceRange,
-  investmentFormatted: string,
-  paymentFormatted: string,
-  pointsPerContainer: number,
-  pointsPerScu: number,
-  pointsPerScuFormatted: string,
-  profit: PriceRange,
-  profitAllNeededMissions: PriceRange,
-  profitAllNeededMissionsFormatted: string,
-  profitFormatted: string,
-  profitPerContainerFormatted: string,
-  profitPerScuFormatted: string,
-  scuPerMission: number,
-  scuPerMissionFormatted: string,
+  commodities: CompleteMissionCommodity[]
+  commoditiesFormatted: string
+  containerCount: number
+  minContainerCount: number
+  investment: PriceRange
+  investmentFormatted: string
+  paymentFormatted: string
+  pointsPerContainer: number
+  pointsPerScu: number
+  pointsPerScuFormatted: string
+  profit: PriceRange
+  profitAllNeededMissions: PriceRange
+  profitAllNeededMissionsFormatted: string
+  profitFormatted: string
+  profitPerContainerFormatted: string
+  profitPerScuFormatted: string
+  scuPerMission: number
+  scuPerMissionFormatted: string
 }
 
-export const createStateMission = (configMission: ConfigMission, missionCategories: MissionCategory[], rewards: Reward[]): Mission => {
+export const createStateMission = (
+  configMission: ConfigMission,
+  missionCategories: MissionCategory[],
+  rewards: Reward[],
+): Mission => {
   const foundCategory = missionCategories.find(
     (category) => category.id === configMission.missionCategory_id,
   )
   const highestRewardPoints = getHighestRewardPoints(rewards)
-  const missionsNeededForHighestReward = Math.ceil(highestRewardPoints / configMission.reward.points)
+  const missionsNeededForHighestReward = Math.ceil(
+    highestRewardPoints / configMission.reward.points,
+  )
 
   return {
     ...configMission,
@@ -108,7 +114,9 @@ export const getContainerSizes = (scuValue: number): Container[] => {
   return result
 }
 
-const getContainerCountForMissionCommodities = (completeMissionCommodities: CompleteMissionCommodity[]): number => {
+const getContainerCountForMissionCommodities = (
+  completeMissionCommodities: CompleteMissionCommodity[],
+): number => {
   return completeMissionCommodities.reduce((containerForMission, commodity) => {
     const commodityContainers = commodity.containers.reduce((acc, container) => {
       return acc + container.count
@@ -118,8 +126,9 @@ const getContainerCountForMissionCommodities = (completeMissionCommodities: Comp
   }, 0)
 }
 
-
-const isCompleteMissionCommoditiesArray = (commodities: any[]): commodities is CompleteMissionCommodity[] => {
+const isCompleteMissionCommoditiesArray = (
+  commodities: any[],
+): commodities is CompleteMissionCommodity[] => {
   if (commodities == null || !Array.isArray(commodities)) {
     return false
   }
@@ -139,13 +148,19 @@ const isCompleteMissionCommoditiesArray = (commodities: any[]): commodities is C
   }, null)
 }
 
-const useCompleteCommodities = (missionCommodities: ConfigMissionCommodity[]|CompleteMissionCommodity[], commodities: Commodity[]) => {
+const useCompleteCommodities = (
+  missionCommodities: ConfigMissionCommodity[] | CompleteMissionCommodity[],
+  commodities: Commodity[],
+) => {
   return isCompleteMissionCommoditiesArray(missionCommodities)
     ? missionCommodities
     : createCompleteMissionCommodities(missionCommodities, commodities)
 }
 
-const createCompleteMissionCommodities = (missionCommodities: ConfigMissionCommodity[], commodities: Commodity[]): CompleteMissionCommodity[] => {
+const createCompleteMissionCommodities = (
+  missionCommodities: ConfigMissionCommodity[],
+  commodities: Commodity[],
+): CompleteMissionCommodity[] => {
   return missionCommodities.map((singleCommodity) => {
     const foundCommodity = commodities.find((item) => item.id === singleCommodity.commodity_id)
     const combinedCommodity = { ...singleCommodity, ...foundCommodity }
@@ -165,7 +180,10 @@ const createCompleteMissionCommodities = (missionCommodities: ConfigMissionCommo
   })
 }
 
-export const getCompleteCommoditiesForMission = (mission: Mission|CompleteMission, commodities: Commodity[]) => {
+export const getCompleteCommoditiesForMission = (
+  mission: Mission | CompleteMission,
+  commodities: Commodity[],
+) => {
   const completeMissionCommodities = useCompleteCommodities(mission.commodities, commodities)
   const containerCount = getContainerCountForMissionCommodities(completeMissionCommodities)
   const commoditiesFormatted = completeMissionCommodities
@@ -174,13 +192,16 @@ export const getCompleteCommoditiesForMission = (mission: Mission|CompleteMissio
     })
     .join(' + ')
 
-  const minContainerCount = completeMissionCommodities.reduce((containerForMission: number, completeMissionCommodity: CompleteMissionCommodity) => {
-    const commodityContainers = completeMissionCommodity.containers.reduce((acc, container) => {
-      return acc + container.count
-    }, 0)
+  const minContainerCount = completeMissionCommodities.reduce(
+    (containerForMission: number, completeMissionCommodity: CompleteMissionCommodity) => {
+      const commodityContainers = completeMissionCommodity.containers.reduce((acc, container) => {
+        return acc + container.count
+      }, 0)
 
-    return containerForMission + commodityContainers
-  }, 0)
+      return containerForMission + commodityContainers
+    },
+    0,
+  )
 
   return {
     commodities: completeMissionCommodities,
@@ -190,7 +211,10 @@ export const getCompleteCommoditiesForMission = (mission: Mission|CompleteMissio
   }
 }
 
-export const getCompletePaymentForMission = (mission: Mission|CompleteMission, shortNumberMode: boolean) => {
+export const getCompletePaymentForMission = (
+  mission: Mission | CompleteMission,
+  shortNumberMode: boolean,
+) => {
   const paymentFormatted = numberToString(mission.reward.payment, shortNumberMode)
 
   return {
@@ -198,8 +222,15 @@ export const getCompletePaymentForMission = (mission: Mission|CompleteMission, s
   }
 }
 
-export const getMissionInvestmentForMission = (mission: Mission|CompleteMission, commodities: Commodity[], shortNumberMode: boolean) => {
-  const completeMissionCommodities: CompleteMissionCommodity[] = useCompleteCommodities(mission.commodities, commodities)
+export const getMissionInvestmentForMission = (
+  mission: Mission | CompleteMission,
+  commodities: Commodity[],
+  shortNumberMode: boolean,
+) => {
+  const completeMissionCommodities: CompleteMissionCommodity[] = useCompleteCommodities(
+    mission.commodities,
+    commodities,
+  )
   const investment: PriceRange = completeMissionCommodities.reduce(
     (accumulator, singleCommodity) => {
       accumulator.min = accumulator.min + singleCommodity.minPrice
@@ -226,8 +257,14 @@ export const getMissionInvestmentForMission = (mission: Mission|CompleteMission,
   }
 }
 
-export const getScuPerMissionForMission = (mission: Mission|CompleteMission, commodities: Commodity[]) => {
-  const completeMissionCommodities: CompleteMissionCommodity[] = useCompleteCommodities(mission.commodities, commodities)
+export const getScuPerMissionForMission = (
+  mission: Mission | CompleteMission,
+  commodities: Commodity[],
+) => {
+  const completeMissionCommodities: CompleteMissionCommodity[] = useCompleteCommodities(
+    mission.commodities,
+    commodities,
+  )
   const scuPerMission: number = completeMissionCommodities.reduce((accumulator, item) => {
     if (item.scu != null && typeof item.scu === 'number' && !isNaN(item.scu)) {
       accumulator = accumulator + item.scu
@@ -243,14 +280,21 @@ export const getScuPerMissionForMission = (mission: Mission|CompleteMission, com
   }
 }
 
-export const getMissionProfitForMission = (mission: Mission|CompleteMission, commodities: Commodity[], shortNumberMode: boolean) => {
+export const getMissionProfitForMission = (
+  mission: Mission | CompleteMission,
+  commodities: Commodity[],
+  shortNumberMode: boolean,
+) => {
   const { scuPerMission } = getScuPerMissionForMission(mission, commodities)
   const { investment } = getMissionInvestmentForMission(mission, commodities, shortNumberMode)
-  const completeMissionCommodities: CompleteMissionCommodity[] = useCompleteCommodities(mission.commodities, commodities)
+  const completeMissionCommodities: CompleteMissionCommodity[] = useCompleteCommodities(
+    mission.commodities,
+    commodities,
+  )
 
   const containerCount = getContainerCountForMissionCommodities(completeMissionCommodities)
 
-  const profit : PriceRange = {
+  const profit: PriceRange = {
     min: mission.reward.payment - investment.max,
     max: mission.reward.payment - investment.min,
     average: mission.reward.payment - investment.average,
@@ -266,7 +310,11 @@ export const getMissionProfitForMission = (mission: Mission|CompleteMission, com
     max: Math.round(profit.max / containerCount),
     average: Math.round(profit.average / containerCount),
   }
-  const profitFormatted: string = createFormattedNumberRange(profit.min, profit.max, shortNumberMode)
+  const profitFormatted: string = createFormattedNumberRange(
+    profit.min,
+    profit.max,
+    shortNumberMode,
+  )
   const profitPerScuFormatted: string = createFormattedNumberRange(
     profitPerScu.min,
     profitPerScu.max,
@@ -287,7 +335,7 @@ export const getMissionProfitForMission = (mission: Mission|CompleteMission, com
 }
 
 export const getProfitForAllNeededMissionsForMission = (
-  mission: Mission|CompleteMission,
+  mission: Mission | CompleteMission,
   commodities: Commodity[],
   shortNumberMode: boolean,
 ) => {
@@ -310,7 +358,7 @@ export const getProfitForAllNeededMissionsForMission = (
 }
 
 export const getPointsPerScuForMission = (
-  mission: Mission|CompleteMission,
+  mission: Mission | CompleteMission,
   commodities: Commodity[],
   shortNumberMode: boolean,
 ) => {
@@ -327,12 +375,16 @@ export const getPointsPerScuForMission = (
 }
 
 export const getPointsPerContainerByMission = (
-  mission: Mission|CompleteMission,
-  commodities: Commodity[]
+  mission: Mission | CompleteMission,
+  commodities: Commodity[],
 ) => {
-  const completeMissionCommodities: CompleteMissionCommodity[] = useCompleteCommodities(mission.commodities, commodities)
+  const completeMissionCommodities: CompleteMissionCommodity[] = useCompleteCommodities(
+    mission.commodities,
+    commodities,
+  )
   const containerCount: number = getContainerCountForMissionCommodities(completeMissionCommodities)
-  const pointsPerContainer: number = Math.round((mission.reward.points / containerCount) * 100) / 100
+  const pointsPerContainer: number =
+    Math.round((mission.reward.points / containerCount) * 100) / 100
 
   return { pointsPerContainer }
 }
@@ -340,7 +392,7 @@ export const getPointsPerContainerByMission = (
 export const createCompleteMissionData = (
   mission: Mission,
   commodities: Commodity[],
-  shortNumberMode: boolean
+  shortNumberMode: boolean,
 ): any => {
   return {
     ...mission,

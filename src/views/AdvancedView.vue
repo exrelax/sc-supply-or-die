@@ -1,6 +1,6 @@
 <script setup>
 import DefaultLayout from '@/layouts/Default.vue'
-import MissionTables from "@/components/SupplyOrDie/MissionTables.vue";
+import MissionTables from '@/components/SupplyOrDie/MissionTables.vue'
 </script>
 
 <template>

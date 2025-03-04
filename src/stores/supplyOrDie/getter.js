@@ -51,11 +51,15 @@ export const detatrineMissions = computed(() => {
 })
 
 export const pyroSalvagingMissions = computed(() => {
-  return salvagingMissions.value.filter((mission) => mission.system.toLowerCase().indexOf('pyro') > -1)
+  return salvagingMissions.value.filter(
+    (mission) => mission.system.toLowerCase().indexOf('pyro') > -1,
+  )
 })
 
 export const stantonSalvagingMissions = computed(() => {
-  return salvagingMissions.value.filter((mission) => mission.system.toLowerCase().indexOf('stanton') > -1)
+  return salvagingMissions.value.filter(
+    (mission) => mission.system.toLowerCase().indexOf('stanton') > -1,
+  )
 })
 
 export const pyroMiningMissions = computed(() => {
@@ -63,6 +67,7 @@ export const pyroMiningMissions = computed(() => {
 })
 
 export const stantonMiningMissions = computed(() => {
-  return miningMissions.value.filter((mission) => mission.system.toLowerCase().indexOf('stanton') > -1)
+  return miningMissions.value.filter(
+    (mission) => mission.system.toLowerCase().indexOf('stanton') > -1,
+  )
 })
-

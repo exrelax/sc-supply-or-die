@@ -1,6 +1,6 @@
 export interface Reward {
-  id: string,
-  name: string,
-  points: number,
-  image?: string,
+  id: string
+  name: string
+  points: number
+  image?: string
 }

@@ -1,29 +1,29 @@
 <script setup>
-import { computed, ref } from "vue";
-import eventBus from "@/utils/eventBus.js";
-import ShortNumberSwitch from "@/components/SupplyOrDie/ShortNumberSwitch.vue";
-import SvgIcon from "@/components/helpers/SvgIcon.vue";
+import { computed, ref } from 'vue'
+import eventBus from '@/utils/eventBus.js'
+import ShortNumberSwitch from '@/components/SupplyOrDie/ShortNumberSwitch.vue'
+import SvgIcon from '@/components/helpers/SvgIcon.vue'
 
-const showDrawer = ref(false);
+const showDrawer = ref(false)
 
 const openDrawer = () => {
-  showDrawer.value = true;
-};
+  showDrawer.value = true
+}
 
 const closeDrawer = () => {
-  showDrawer.value = false;
-};
+  showDrawer.value = false
+}
 
 const cssClasses = computed(() => {
   return {
-    'drawer': true,
-    "drawer--open": showDrawer.value,
-    "drawer--closed": !showDrawer.value,
-  };
+    drawer: true,
+    'drawer--open': showDrawer.value,
+    'drawer--closed': !showDrawer.value,
+  }
 })
 
-eventBus.on("drawer.open", openDrawer);
-eventBus.on("drawer.close", closeDrawer);
+eventBus.on('drawer.open', openDrawer)
+eventBus.on('drawer.close', closeDrawer)
 </script>
 
 <template>
@@ -33,9 +33,7 @@ eventBus.on("drawer.close", closeDrawer);
       <div>
         <button class="button button--icon" @click="eventBus.emit('drawer.close')" title="Close">
           <SvgIcon name="xmark-large" />
-          <span class="screen-reader-text">
-            Close Drawer
-          </span>
+          <span class="screen-reader-text"> Close Drawer </span>
         </button>
       </div>
     </header>

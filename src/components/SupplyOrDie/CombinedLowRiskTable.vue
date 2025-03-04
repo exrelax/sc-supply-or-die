@@ -1,16 +1,21 @@
 <script setup>
-import MissionTable from "@/components/SupplyOrDie/MissionTable.vue";
+import MissionTable from '@/components/SupplyOrDie/MissionTable.vue'
 
 import config from '@/config.js'
-import { groupMissionsByFieldName, createGroupedMissionsTableData } from "@/utils/missions.js";
+import { groupMissionsByFieldName, createGroupedMissionsTableData } from '@/utils/missions.js'
 
 import { computed } from 'vue'
-import { storeToRefs} from "pinia";
+import { storeToRefs } from 'pinia'
 import { useSupplyOrDieStore } from '@/stores/supplyOrDie.js'
 
 const { missionTableFields } = config
 const store = useSupplyOrDieStore()
-const { pyroSalvagingMissions, pyroMiningMissions, stantonSalvagingMissions, stantonMiningMissions } = storeToRefs(store)
+const {
+  pyroSalvagingMissions,
+  pyroMiningMissions,
+  stantonSalvagingMissions,
+  stantonMiningMissions,
+} = storeToRefs(store)
 
 const combinedPyroMissions = computed(() => {
   return pyroSalvagingMissions.value.concat(pyroMiningMissions.value)
@@ -38,7 +43,7 @@ const tableData = computed(() => {
       <p>Salvage, Mine, Trade or ‘Liberate’ Resources</p>
     </header>
     <div>
-      <MissionTable :table-data="tableData"/>
+      <MissionTable :table-data="tableData" />
     </div>
   </div>
 </template>

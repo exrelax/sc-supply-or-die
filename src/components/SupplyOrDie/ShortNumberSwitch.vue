@@ -1,6 +1,6 @@
 <script setup>
-import {useSupplyOrDieStore} from "@/stores/supplyOrDie.js";
-import {computed} from "vue";
+import { useSupplyOrDieStore } from '@/stores/supplyOrDie.js'
+import { computed } from 'vue'
 
 const store = useSupplyOrDieStore()
 
@@ -16,9 +16,7 @@ const shortNumberMode = computed({
 
 <template>
   <label class="short-number-switch">
-    <span class="short-number-switch__label-text label-text">
-      Rounded Numbers
-    </span>
+    <span class="short-number-switch__label-text label-text"> Rounded Numbers </span>
     <div class="short-number-switch__switch switch">
       <input type="checkbox" v-model="shortNumberMode" />
       <div class="slider round"></div>
@@ -64,7 +62,7 @@ const shortNumberMode = computed({
 }
 
 .switch input {
-  display:none;
+  display: none;
 }
 
 .slider {
@@ -75,18 +73,18 @@ const shortNumberMode = computed({
   position: absolute;
   right: 0;
   top: 0;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .slider:before {
   position: absolute;
   left: var(--switch-dot-offset-px);
   bottom: var(--switch-dot-offset-px);
-  content: "";
+  content: '';
   height: var(--switch-dot-size-px);
   width: var(--switch-dot-size-px);
   background-color: var(--color-white);
-  transition: .4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
@@ -104,5 +102,4 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-
 </style>

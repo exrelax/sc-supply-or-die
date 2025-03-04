@@ -5,9 +5,7 @@ import SvgIcon from '@/components/helpers/SvgIcon.vue'
 <template>
   <header class="sod__tagline">
     <SvgIcon name="warning" />
-    <h2 class="sod__tagline__headline">
-      Contract Progression, Points & Pay can be shared
-    </h2>
+    <h2 class="sod__tagline__headline">Contract Progression, Points & Pay can be shared</h2>
     <SvgIcon name="warning" />
   </header>
 </template>

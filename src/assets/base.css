@@ -69,34 +69,36 @@
   --font-family-headline: var(--font-family-serif);
 
   --font-size-body: 16;
-  --font-size-body-px: var(--font-size-body)px;
+  --font-size-body-px: var(--font-size-body) px;
   --line-height-body: 24;
-  --line-height-body-px: var(--line-height-body)px;
+  --line-height-body-px: var(--line-height-body) px;
   --line-height-body-scale: calc(var(--line-height-body) / var(--font-size-body));
 
   --margin-body: var(--line-height-body);
-  --margin-body-px: var(--margin-body)px;
+  --margin-body-px: var(--margin-body) px;
   --margin-body-scale: calc(var(--margin-body) / var(--font-size-body));
 
   --font-size-icon-inline: 22;
-  --font-size-icon-inline-px: var(--font-size-icon-inline)px;
+  --font-size-icon-inline-px: var(--font-size-icon-inline) px;
   --font-size-icon-inline-pc: calc(var(--font-size-icon-inline) / var(--font-size-body) * 100%);
   --line-height-icon-inline: var(--line-height-body);
-  --line-height-icon-inline-px: var(--line-height-icon-inline)px;
-  --line-height-icon-inline-scale: calc(var(--line-height-icon-inline) / var(--font-size-icon-inline));
+  --line-height-icon-inline-px: var(--line-height-icon-inline) px;
+  --line-height-icon-inline-scale: calc(
+    var(--line-height-icon-inline) / var(--font-size-icon-inline)
+  );
 
   --font-size-h1: 46;
-  --font-size-h1-px: var(--font-size-h1)px;
+  --font-size-h1-px: var(--font-size-h1) px;
   --font-size-h1-pc: calc(var(--font-size-h1) / var(--font-size-body) * 100%);
   --line-height-h1: 48;
-  --line-height-h1-px: var(--line-height-h1)px;
+  --line-height-h1-px: var(--line-height-h1) px;
   --line-height-h1-scale: calc(var(--line-height-h1) / var(--font-size-h1));
   --margin-h1-em: calc(var(--margin-body) / var(--font-size-h1) * 1em);
   --font-size-h2: 42;
-  --font-size-h2-px: var(--font-size-h2)px;
+  --font-size-h2-px: var(--font-size-h2) px;
   --font-size-h2-pc: calc(var(--font-size-h2) / var(--font-size-body) * 100%);
   --line-height-h2: 48;
-  --line-height-h2-px: var(--line-height-h2)px;
+  --line-height-h2-px: var(--line-height-h2) px;
   --line-height-h2-scale: calc(var(--line-height-h2) / var(--font-size-h2));
   --margin-h2-em: calc(var(--margin-body) / var(--font-size-h2) * 1em);
 

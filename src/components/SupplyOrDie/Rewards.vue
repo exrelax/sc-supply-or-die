@@ -21,9 +21,7 @@ const { rewards } = storeToRefs(store)
         <h3 class="sod__rewards__item-headline">
           {{ reward.name }}
         </h3>
-        <p class="sod__rewards__item-points">
-          {{ reward.points }} Points
-        </p>
+        <p class="sod__rewards__item-points">{{ reward.points }} Points</p>
       </div>
     </div>
     <div v-else class="sod__rewards__items sod__rewards__items--list-view">
@@ -32,13 +30,11 @@ const { rewards } = storeToRefs(store)
           <h3 class="sod__rewards__item-headline">
             {{ reward.name }}
           </h3>
-          <p class="sod__rewards__item-points">
-            {{ reward.points }} Points
-          </p>
+          <p class="sod__rewards__item-points">{{ reward.points }} Points</p>
         </div>
       </div>
       <figure class="sod__rewards__item-image-container">
-        <img src="/images/sod-rewards.webp" alt="">
+        <img src="/images/sod-rewards.webp" alt="" />
       </figure>
     </div>
   </div>

@@ -31,5 +31,3 @@ import TutorialLowRiskTables from './TutorialLowRiskTables.vue'
   }
 }
 </style>
-
-

@@ -27,13 +27,11 @@ import SvgIcon from '@/components/helpers/SvgIcon.vue'
         Priority Contracts
       </span>
       need help to resupply
-      <span class="location--pyro">Ruin</span>,
-      <span class="location--pyro">Orbituary</span> &
+      <span class="location--pyro">Ruin</span>, <span class="location--pyro">Orbituary</span> &
       <span class="location--pyro">Checkmate</span> stations in Pyro &
       <span class="location--stanton">Pyro Gateway</span> in
-      <span class="location--stanton">Stanton</span>.
-      With demands for RMC, CM, Mineable/Trade commodities and the lucrative
-      Detatrine – which is sold at new
+      <span class="location--stanton">Stanton</span>. With demands for RMC, CM, Mineable/Trade
+      commodities and the lucrative Detatrine – which is sold at new
       <span class="inline-icon inline-icon--xenothreat">
         XenoThreat
         <SvgIcon name="xenothreat" />

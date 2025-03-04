@@ -11,7 +11,12 @@ const navItems = ref([
 <template>
   <nav class="nav-main">
     <ul class="nav-main__list" role="menu">
-      <li v-for="(item, index) in navItems" :key="index" class="nav-main__list-item" role="menuitem">
+      <li
+        v-for="(item, index) in navItems"
+        :key="index"
+        class="nav-main__list-item"
+        role="menuitem"
+      >
         <RouterLink :to="item.path">{{ item.name }}</RouterLink>
       </li>
     </ul>
@@ -20,7 +25,6 @@ const navItems = ref([
 
 <style>
 .nav-main {
-
 }
 
 .nav-main__list {

@@ -2,10 +2,7 @@
   {
     "title": "Fa",
     "path": "fa",
-    "items": [
-      "gear",
-      "xmark-large"
-    ],
+    "items": ["gear", "xmark-large"],
     "viewBoxes": [
       {
         "name": "gear",

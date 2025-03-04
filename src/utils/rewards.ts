@@ -1,4 +1,4 @@
-import { Reward } from '@/models/Reward';
+import { Reward } from '@/models/Reward'
 
 export const getHighestReward = (rewards: Reward[]) => {
   return rewards.reduce((prev, current) => {

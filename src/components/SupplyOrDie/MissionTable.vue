@@ -1,7 +1,7 @@
 <script setup>
 import { computed, defineProps } from 'vue'
-import isComponent from "@/composables/isComponent";
-import SvgIcon from "@/components/helpers/SvgIcon.vue";
+import isComponent from '@/composables/isComponent'
+import SvgIcon from '@/components/helpers/SvgIcon.vue'
 
 isComponent(SvgIcon)
 
@@ -28,34 +28,44 @@ const tableCssClasses = computed(() => {
           :class="headerHeadline.classNames"
           :colspan="headerHeadline.colspan"
         >
-          <component v-if="isComponent(headerHeadline.component)" :is="headerHeadline.component" v-bind="headerHeadline.componentProps" />
-          <span v-if="headerHeadline.title != null" v-html="headerHeadline.title" class="table-missions__cell-title" />
+          <component
+            v-if="isComponent(headerHeadline.component)"
+            :is="headerHeadline.component"
+            v-bind="headerHeadline.componentProps"
+          />
+          <span
+            v-if="headerHeadline.title != null"
+            v-html="headerHeadline.title"
+            class="table-missions__cell-title"
+          />
         </th>
       </tr>
       <tr class="table-missions__head-row">
-        <th
-          v-for="(header, index) in tableData.headers"
-          :key="index"
-          :class="header.classNames"
-        >
-          <component v-if="isComponent(header.component)" :is="header.component" v-bind="header.componentProps" />
-          <span v-if="header.title != null" v-html="header.title" class="table-missions__cell-title" />
+        <th v-for="(header, index) in tableData.headers" :key="index" :class="header.classNames">
+          <component
+            v-if="isComponent(header.component)"
+            :is="header.component"
+            v-bind="header.componentProps"
+          />
+          <span
+            v-if="header.title != null"
+            v-html="header.title"
+            class="table-missions__cell-title"
+          />
         </th>
       </tr>
     </thead>
     <tbody class="table-missions__body">
-    <tr
-      v-for="(row, index) in tableData.rows" :key="index"
-      class="table-missions__body-row"
-    >
-      <td
-        v-for="(cell, index) in row" :key="index"
-        :class="cell.classNames"
-      >
-        <component v-if="isComponent(cell.component)" :is="cell.component" v-bind="cell.componentProps" />
-        <span v-if="cell.title != null" v-html="cell.title" class="table-missions__cell-title" />
-      </td>
-    </tr>
+      <tr v-for="(row, index) in tableData.rows" :key="index" class="table-missions__body-row">
+        <td v-for="(cell, index) in row" :key="index" :class="cell.classNames">
+          <component
+            v-if="isComponent(cell.component)"
+            :is="cell.component"
+            v-bind="cell.componentProps"
+          />
+          <span v-if="cell.title != null" v-html="cell.title" class="table-missions__cell-title" />
+        </td>
+      </tr>
     </tbody>
   </table>
 </template>
@@ -76,7 +86,7 @@ const tableCssClasses = computed(() => {
 }
 
 .table-missions__cell .icon {
-  margin-right: .5em;
+  margin-right: 0.5em;
 }
 
 .table-missions__headline-row .table-missions__cell--headline {

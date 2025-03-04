@@ -8,10 +8,8 @@ import eventBus from '@/utils/eventBus.js'
     <ul class="nav-secondary__list" role="menu">
       <li class="nav-secondary__list-item" role="menuitem">
         <button class="button button--secondary" @click="eventBus.emit('drawer.open')">
-          <SvgIcon name="fa/gear"/>
-          <span class="screen-reader-text">
-            Settings
-          </span>
+          <SvgIcon name="fa/gear" />
+          <span class="screen-reader-text"> Settings </span>
         </button>
       </li>
     </ul>

@@ -115,52 +115,28 @@ const missionsComplete = computed(() => {
         <td class="table-missions__cell table-missions__cell--scu">
           {{ mission.scuPerMissionFormatted }}
         </td>
-        <td
-          v-if="showAll"
-          class="table-missions__cell table-missions__cell--container"
-        >
+        <td v-if="showAll" class="table-missions__cell table-missions__cell--container">
           {{ mission.minContainerCount }}
         </td>
-        <td
-          v-if="showAll"
-          class="table-missions__cell table-missions__cell--investment"
-        >
+        <td v-if="showAll" class="table-missions__cell table-missions__cell--investment">
           {{ mission.investmentFormatted }}
         </td>
-        <td
-          v-if="showAll"
-          class="table-missions__cell table-missions__cell--profit"
-        >
+        <td v-if="showAll" class="table-missions__cell table-missions__cell--profit">
           {{ mission.profitFormatted }}
         </td>
-        <td
-          v-if="showAll"
-          class="table-missions__cell table-missions__cell--profit-per-scu"
-        >
+        <td v-if="showAll" class="table-missions__cell table-missions__cell--profit-per-scu">
           {{ mission.profitPerScuFormatted }}
         </td>
-        <td
-          v-if="showAll"
-          class="table-missions__cell table-missions__cell--profit-per-container"
-        >
+        <td v-if="showAll" class="table-missions__cell table-missions__cell--profit-per-container">
           {{ mission.profitPerContainerFormatted }}
         </td>
-        <td
-          v-if="showAll"
-          class="table-missions__cell table-missions__cell--points-per-scu"
-        >
+        <td v-if="showAll" class="table-missions__cell table-missions__cell--points-per-scu">
           {{ mission.pointsPerScuFormatted }}
         </td>
-        <td
-          v-if="showAll"
-          class="table-missions__cell table-missions__cell--points-per-container"
-        >
+        <td v-if="showAll" class="table-missions__cell table-missions__cell--points-per-container">
           {{ mission.pointsPerContainer }}
         </td>
-        <td
-          v-if="showAll"
-          class="table-missions__cell table-missions__cell--missions-needed"
-        >
+        <td v-if="showAll" class="table-missions__cell table-missions__cell--missions-needed">
           {{ mission.missionsNeededForHighestReward }}
         </td>
         <td class="table-missions__cell table-missions__cell--profit-total">

@@ -40,10 +40,13 @@ const cellIndexClassNamePrefix = `${cellClassName}--index-`
 const missionCellClassNamePrefix = `${cellClassName}--mission-`
 
 export const getNestedValue = (obj: any, path: string): any => {
-  return path.split('.').reduce((acc, key) => acc && acc[key], obj);
+  return path.split('.').reduce((acc, key) => acc && acc[key], obj)
 }
 
-export const groupMissionsByFieldName = (missions: CompleteMission[], fieldName: string): MissionGroup[] => {
+export const groupMissionsByFieldName = (
+  missions: CompleteMission[],
+  fieldName: string,
+): MissionGroup[] => {
   return missions.reduce((accumulator: MissionGroup[], mission: CompleteMission) => {
     const searchValue = mission[fieldName]
     const foundGroup: MissionGroup = accumulator.find((group) => group.title === searchValue)
@@ -61,7 +64,11 @@ export const groupMissionsByFieldName = (missions: CompleteMission[], fieldName:
   }, [] as MissionGroup[])
 }
 
-const createFieldClassNames = (configMissionTableField: ConfigMissionTableField, index: number, addGapClassName: boolean = false): MissionTableFieldClassNames => {
+const createFieldClassNames = (
+  configMissionTableField: ConfigMissionTableField,
+  index: number,
+  addGapClassName: boolean = false,
+): MissionTableFieldClassNames => {
   const classNames = [cellClassName, `${cellClassName}--${configMissionTableField.classSuffix}`]
   const indexCellClassName = `${cellIndexClassNamePrefix}${index}`
   const headClassNames = classNames.concat([headCellClassName, indexCellClassName])
@@ -79,7 +86,9 @@ const createFieldClassNames = (configMissionTableField: ConfigMissionTableField,
 
 const createMissionTableFields = (fieldNames: string[]) => {
   return fieldNames.map((fieldName, index) => {
-    const foundConfigMissionTableField: ConfigMissionTableField = configMissionTableFields.find((field) => field.name === fieldName)
+    const foundConfigMissionTableField: ConfigMissionTableField = configMissionTableFields.find(
+      (field) => field.name === fieldName,
+    )
 
     return {
       ...foundConfigMissionTableField,
@@ -88,16 +97,30 @@ const createMissionTableFields = (fieldNames: string[]) => {
   })
 }
 
-const createMissionTableCell = (mission: CompleteMission, missionTableField: MissionTableField, missionIndex: number, cellIndex: number, groupTable: boolean = false): MissionTableCell => {
+const createMissionTableCell = (
+  mission: CompleteMission,
+  missionTableField: MissionTableField,
+  missionIndex: number,
+  cellIndex: number,
+  groupTable: boolean = false,
+): MissionTableCell => {
   const { name } = missionTableField
-  const rawTitle = name.indexOf('.') > -1 ?
-    getNestedValue(mission, name) : mission[name]
+  const rawTitle = name.indexOf('.') > -1 ? getNestedValue(mission, name) : mission[name]
   const missionClassName = `${missionCellClassNamePrefix}${missionIndex}`
   const cellIndexClassName = `${cellIndexClassNamePrefix}${cellIndex}`
-  const classNames: string[] = missionTableField.classNames.concat([missionClassName, cellIndexClassName])
-  const headClassNames: string[] = missionTableField.headClassNames.concat([missionClassName, cellIndexClassName])
+  const classNames: string[] = missionTableField.classNames.concat([
+    missionClassName,
+    cellIndexClassName,
+  ])
+  const headClassNames: string[] = missionTableField.headClassNames.concat([
+    missionClassName,
+    cellIndexClassName,
+  ])
 
-  const title = rawTitle != null && typeof rawTitle === 'string' || typeof rawTitle === 'number' ? rawTitle.toString() : ''
+  const title =
+    (rawTitle != null && typeof rawTitle === 'string') || typeof rawTitle === 'number'
+      ? rawTitle.toString()
+      : ''
   const component = rawTitle?.component ?? null
   const componentProps = rawTitle?.componentProps ?? null
 
@@ -118,7 +141,10 @@ const createMissionTableCell = (mission: CompleteMission, missionTableField: Mis
   }
 }
 
-const createMissionTableRows = (missions: CompleteMission[], missionTableFields: MissionTableField[]) => {
+const createMissionTableRows = (
+  missions: CompleteMission[],
+  missionTableFields: MissionTableField[],
+) => {
   return missions.map((mission: CompleteMission, missionIndex: number) => {
     return missionTableFields.map((missionTableField: MissionTableField, cellIndex) => {
       return createMissionTableCell(mission, missionTableField, missionIndex, cellIndex, false)
@@ -126,12 +152,18 @@ const createMissionTableRows = (missions: CompleteMission[], missionTableFields:
   })
 }
 
-const createGroupedMissionTableRows = (missionGroups: MissionGroup[], missionTableFields: MissionTableField[], headers: MissionTableCell[]) => {
+const createGroupedMissionTableRows = (
+  missionGroups: MissionGroup[],
+  missionTableFields: MissionTableField[],
+  headers: MissionTableCell[],
+) => {
   return missionGroups.map((group: MissionGroup, rowIndex: number) => {
-    const cells = [{
-      title: group.title,
-      classNames: headers[0].classNames.concat([groupTitleCellClassName]),
-    }]
+    const cells = [
+      {
+        title: group.title,
+        classNames: headers[0].classNames.concat([groupTitleCellClassName]),
+      },
+    ]
 
     group.missions.forEach((mission: CompleteMission, missionIndex: number) => {
       missionTableFields.forEach((missionTableField: MissionTableField, cellIndex) => {
@@ -139,7 +171,13 @@ const createGroupedMissionTableRows = (missionGroups: MissionGroup[], missionTab
           return
         }
 
-        const { title, classNames, headClassNames } = createMissionTableCell(mission, missionTableField, missionIndex, cellIndex, true)
+        const { title, classNames, headClassNames } = createMissionTableCell(
+          mission,
+          missionTableField,
+          missionIndex,
+          cellIndex,
+          true,
+        )
 
         if (rowIndex === 0) {
           headers.push({
@@ -174,7 +212,12 @@ const createHeadlineClassNames = (missionIndex?: number): string[] => {
   return classNames
 }
 
-const createMissionHeaderHeadline = (missions: CompleteMission[], fieldNames: string[], missionHeadlineField: string, offset?: number = 0) => {
+const createMissionHeaderHeadline = (
+  missions: CompleteMission[],
+  fieldNames: string[],
+  missionHeadlineField: string,
+  offset?: number = 0,
+) => {
   let indexCellClassName: string
   let classNames = createHeadlineClassNames()
   const headerHeadline = []
@@ -193,7 +236,7 @@ const createMissionHeaderHeadline = (missions: CompleteMission[], fieldNames: st
     }
   }
 
-  indexCellClassName = `${cellIndexClassNamePrefix}${headlineCellIndex+1}`
+  indexCellClassName = `${cellIndexClassNamePrefix}${headlineCellIndex + 1}`
   headerHeadline.push({
     name: missionHeadlineField,
     title,
@@ -204,7 +247,11 @@ const createMissionHeaderHeadline = (missions: CompleteMission[], fieldNames: st
   return headerHeadline
 }
 
-const createGroupedMissionHeaderHeadline = (missionGroups: MissionGroup[], fieldNames: string[], missionHeadlineField: string) => {
+const createGroupedMissionHeaderHeadline = (
+  missionGroups: MissionGroup[],
+  fieldNames: string[],
+  missionHeadlineField: string,
+) => {
   let headlineCellIndex = 0
   let classNames = createHeadlineClassNames()
   let indexCellClassName = `${cellIndexClassNamePrefix}${headlineCellIndex}`
@@ -212,9 +259,13 @@ const createGroupedMissionHeaderHeadline = (missionGroups: MissionGroup[], field
     {
       name: fieldNames[0],
       title: '',
-      classNames: classNames.concat([headlineOffsetCellClassName, groupTitleCellClassName, indexCellClassName]),
+      classNames: classNames.concat([
+        headlineOffsetCellClassName,
+        groupTitleCellClassName,
+        indexCellClassName,
+      ]),
       colspan: 0,
-    }
+    },
   ]
 
   missionGroups[0].missions.forEach((mission: CompleteMission, missionIndex) => {
@@ -235,7 +286,12 @@ const createGroupedMissionHeaderHeadline = (missionGroups: MissionGroup[], field
 
 /* Create Tables */
 
-export const createMissionTableData = (missions: CompleteMission[], fieldNames: string[], missionHeadlineField?: string, offset?: number)  => {
+export const createMissionTableData = (
+  missions: CompleteMission[],
+  fieldNames: string[],
+  missionHeadlineField?: string,
+  offset?: number,
+) => {
   const missionTableFields: MissionTableField[] = createMissionTableFields(fieldNames)
 
   const headers = missionTableFields.map((missionTableField: MissionTableField) => {
@@ -246,8 +302,10 @@ export const createMissionTableData = (missions: CompleteMission[], fieldNames: 
     }
   })
   const rows = createMissionTableRows(missions, missionTableFields)
-  const headerHeadline = missionHeadlineField != null ?
-      createMissionHeaderHeadline(missions, fieldNames, missionHeadlineField, offset) : null
+  const headerHeadline =
+    missionHeadlineField != null
+      ? createMissionHeaderHeadline(missions, fieldNames, missionHeadlineField, offset)
+      : null
 
   return {
     headerHeadline,
@@ -256,12 +314,18 @@ export const createMissionTableData = (missions: CompleteMission[], fieldNames: 
   }
 }
 
-export const createGroupedMissionsTableData = (missionGroups: MissionGroup[], fieldNames: string[], missionHeadlineField?: string) => {
+export const createGroupedMissionsTableData = (
+  missionGroups: MissionGroup[],
+  fieldNames: string[],
+  missionHeadlineField?: string,
+) => {
   const missionTableFields: MissionTableField[] = createMissionTableFields(fieldNames)
   const headers = [missionTableFields[0]]
   const rows = createGroupedMissionTableRows(missionGroups, missionTableFields, headers)
-  const headerHeadline = missionHeadlineField != null ?
-    createGroupedMissionHeaderHeadline(missionGroups, fieldNames, missionHeadlineField) : null
+  const headerHeadline =
+    missionHeadlineField != null
+      ? createGroupedMissionHeaderHeadline(missionGroups, fieldNames, missionHeadlineField)
+      : null
 
   return {
     headerHeadline,

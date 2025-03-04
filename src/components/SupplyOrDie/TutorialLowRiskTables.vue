@@ -1,18 +1,23 @@
 <script setup>
-import MissionTable from "@/components/SupplyOrDie/MissionTable.vue";
-import MissionTableCommodities from "@/components/SupplyOrDie/MissionTableCommodities.vue";
-import SvgIcon from "@/components/helpers/SvgIcon.vue";
+import MissionTable from '@/components/SupplyOrDie/MissionTable.vue'
+import MissionTableCommodities from '@/components/SupplyOrDie/MissionTableCommodities.vue'
+import SvgIcon from '@/components/helpers/SvgIcon.vue'
 import { computed, ref, onMounted } from 'vue'
-import { storeToRefs} from "pinia";
+import { storeToRefs } from 'pinia'
 import { useSupplyOrDieStore } from '@/stores/supplyOrDie.js'
 import {
   createGroupedMissionsTableData,
   createMissionTableData,
-  groupMissionsByFieldName
-} from "@/utils/missions.js";
+  groupMissionsByFieldName,
+} from '@/utils/missions.js'
 
 const store = useSupplyOrDieStore()
-const { pyroSalvagingMissions, pyroMiningMissions, stantonSalvagingMissions, stantonMiningMissions } = storeToRefs(store)
+const {
+  pyroSalvagingMissions,
+  pyroMiningMissions,
+  stantonSalvagingMissions,
+  stantonMiningMissions,
+} = storeToRefs(store)
 
 const createHeadersTitleWithIcon = (headers) => {
   return headers.map((header, index) => {
@@ -32,14 +37,14 @@ const createMissionsWithComponents = (missions) => {
       return {
         scu: commodity.scu,
         nameShort: commodity.nameShort,
-        name: commodity.name
+        name: commodity.name,
       }
     })
     const commoditiesFormatted = {
       component: MissionTableCommodities,
       componentProps: {
-        commodities: commoditiesComponentProps
-      }
+        commodities: commoditiesComponentProps,
+      },
     }
 
     return {
@@ -71,14 +76,14 @@ const pyroTableData = computed(() => {
   return createGroupedMissionsTableData(groupedMissions, fieldNames, 'type')
 })
 
-const pyroSalvagingMissionsTableData = computed( () => {
+const pyroSalvagingMissionsTableData = computed(() => {
   const missionsForTable = createMissionsWithComponents(pyroSalvagingMissions.value)
   const tableData = createMissionTableData(missionsForTable, fieldNames, 'type', 1)
   const headers = createHeadersTitleWithIcon(tableData.headers)
 
   return {
     ...tableData,
-    headers
+    headers,
   }
 })
 
@@ -89,7 +94,7 @@ const pyroMiningMissionsTableData = computed(() => {
 
   return {
     ...tableData,
-    headers
+    headers,
   }
 })
 
@@ -100,7 +105,7 @@ const stantonTableData = computed(() => {
 
   return {
     ...tableData,
-    headers
+    headers,
   }
 })
 </script>
@@ -108,25 +113,44 @@ const stantonTableData = computed(() => {
 <template>
   <div class="sod__tutorial-low-risk-tables">
     <div class="sod__tutorial-low-risk-tables__systems">
-      <div class="sod__tutorial-low-risk-tables__system sod__tutorial-low-risk-tables__system--pyro">
-        <header class="sod__tutorial-low-risk-tables__system-header sod__tutorial-low-risk-tables__system-header--pyro">
+      <div
+        class="sod__tutorial-low-risk-tables__system sod__tutorial-low-risk-tables__system--pyro"
+      >
+        <header
+          class="sod__tutorial-low-risk-tables__system-header sod__tutorial-low-risk-tables__system-header--pyro"
+        >
           <h2>Pyro</h2>
-          <p>Detatrine, Construction Materials, Recycled Material Composite, Pressurized Ice, Tin</p>
+          <p>
+            Detatrine, Construction Materials, Recycled Material Composite, Pressurized Ice, Tin
+          </p>
         </header>
         <div class="tutorial-table-missions--left">
-          <MissionTable :table-data="pyroSalvagingMissionsTableData" class="tutorial-table-missions--pyro-salvaging"/>
-          <MissionTable :table-data="pyroMiningMissionsTableData" class="tutorial-table-missions--pyro-mining"/>
+          <MissionTable
+            :table-data="pyroSalvagingMissionsTableData"
+            class="tutorial-table-missions--pyro-salvaging"
+          />
+          <MissionTable
+            :table-data="pyroMiningMissionsTableData"
+            class="tutorial-table-missions--pyro-mining"
+          />
         </div>
       </div>
-      <div class="sod__tutorial-low-risk-tables__system sod__tutorial-low-risk-tables__system--stanton">
-        <header class="sod__tutorial-low-risk-tables__system-header sod__tutorial-low-risk-tables__system-header--stanton">
+      <div
+        class="sod__tutorial-low-risk-tables__system sod__tutorial-low-risk-tables__system--stanton"
+      >
+        <header
+          class="sod__tutorial-low-risk-tables__system-header sod__tutorial-low-risk-tables__system-header--stanton"
+        >
           <h2>Stanton</h2>
           <p>Corundum & Copper</p>
         </header>
         <MissionTable :tableData="stantonTableData" class="tutorial-table-missions--right" />
       </div>
     </div>
-    <p class="sod__tutorial-low-risk-tables__description">You don‘t need to have the mission active to acquire the materials. Salvage, mine, trade, ‘liberate’ or stockpile!</p>
+    <p class="sod__tutorial-low-risk-tables__description">
+      You don‘t need to have the mission active to acquire the materials. Salvage, mine, trade,
+      ‘liberate’ or stockpile!
+    </p>
   </div>
 </template>
 
@@ -200,7 +224,7 @@ const stantonTableData = computed(() => {
   font-family: var(--font-family-iceland);
   color: var(--color-highlight-system);
   text-transform: uppercase;
-  letter-spacing: .05em;
+  letter-spacing: 0.05em;
 }
 
 .sod__tutorial-low-risk-tables .table-missions__cell--head {
