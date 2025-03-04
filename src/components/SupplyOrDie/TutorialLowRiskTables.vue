@@ -16,11 +16,11 @@ const { pyroSalvagingMissions, pyroMiningMissions, stantonSalvagingMissions, sta
 
 const createHeadersTitleWithIcon = (headers) => {
   return headers.map((header, index) => {
-    if (header.name === 'paymentFormatted') {
-      header.title = 'Pay'
-      header.component = SvgIcon
-      header.componentProps = { name: 'icon/uec' }
-    }
+    // if (header.name === 'paymentFormatted') {
+    //   header.title = 'Pay'
+    //   header.component = SvgIcon
+    //   header.componentProps = { name: 'icon/uec' }
+    // }
 
     return header
   })
@@ -44,7 +44,7 @@ const createMissionsWithComponents = (missions) => {
 
     return {
       ...mission,
-      commoditiesFormatted
+      // commoditiesFormatted
     }
   })
 }
